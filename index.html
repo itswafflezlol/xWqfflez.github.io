@@ -1210,7 +1210,7 @@
                 albumArt.src = song.image;
                 audio.src = song.file;
                 albumArt.onerror = function() {
-                    this.src = 'https://via.placeholder.com/260x140/000000/ffffff?text=' + encodeURIComponent(song.title);
+                    this.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO_d-O6ZaaUOFD4XziP70sQXRcl1pUXTNwfg&s' + encodeURIComponent(song.title);
                 };
                 audio.onerror = function() {
                     console.log('Error loading audio file: ' + song.file);
