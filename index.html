@@ -55,6 +55,196 @@
             opacity: 1;
         }
 
+        @media (max-width: 768px) {
+            body::after {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .music-player {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                width: 260px;
+                background: rgba(255, 255, 255, 0.08);
+                backdrop-filter: blur(40px) saturate(180%);
+                -webkit-backdrop-filter: blur(40px) saturate(180%);
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                padding: 16px;
+                z-index: 10000;
+                transition: all 0.3s ease;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .music-player.loaded {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .music-player:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            }
+
+            .album-art {
+                width: 100%;
+                height: 140px;
+                border-radius: 12px;
+                object-fit: cover;
+                margin-bottom: 12px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .song-info {
+                text-align: center;
+                margin-bottom: 12px;
+            }
+
+            .song-title {
+                font-size: 0.9em;
+                font-weight: 600;
+                color: #ffffff;
+                margin-bottom: 4px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .song-artist {
+                font-size: 0.75em;
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            .progress-container {
+                margin-bottom: 12px;
+            }
+
+            .progress-bar {
+                width: 100%;
+                height: 4px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 2px;
+                overflow: hidden;
+                cursor: pointer;
+                margin-bottom: 6px;
+            }
+
+            .progress {
+                height: 100%;
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+                width: 0%;
+                transition: width 0.1s linear;
+                border-radius: 2px;
+            }
+
+            .time-info {
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.65em;
+                color: rgba(255, 255, 255, 0.5);
+                font-family: 'JetBrains Mono', monospace;
+            }
+
+            .controls {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+
+            .control-btn {
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 50%;
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.2s;
+                font-size: 1em;
+                color: #ffffff;
+            }
+
+            .control-btn:hover {
+                background: rgba(255, 255, 255, 0.15);
+                transform: scale(1.05);
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+
+            .control-btn.play-pause {
+                width: 44px;
+                height: 44px;
+                font-size: 1.2em;
+                background: rgba(255, 255, 255, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.25);
+            }
+
+            .control-btn.play-pause:hover {
+                background: rgba(255, 255, 255, 0.25);
+            }
+
+            .volume-container {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .volume-icon {
+                width: 20px;
+                height: 20px;
+                object-fit: contain;
+                filter: brightness(0) invert(1);
+                opacity: 0.7;
+            }
+
+            .volume-slider {
+                flex: 1;
+                height: 4px;
+                -webkit-appearance: none;
+                appearance: none;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 2px;
+                outline: none;
+            }
+
+            .volume-slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.9);
+                cursor: pointer;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .volume-slider::-moz-range-thumb {
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.9);
+                cursor: pointer;
+                border: none;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .music-player {
+                display: none;
+            }
+        }
+
         .main-nav {
             position: fixed;
             top: 0;
@@ -225,23 +415,6 @@
             background: var(--bg-card);
             border-radius: 2px;
             overflow: hidden;
-            position: relative;
-        }
-
-        .loading-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, var(--white-bright), transparent);
-            animation: loading 1.5s ease-in-out infinite;
-        }
-
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
         }
 
         .container {
@@ -263,7 +436,7 @@
         }
 
         .hero-content {
-            animation: fadeInUp 1s ease-out;
+            animation: fadeInUp 1s ease-out 0.3s both;
         }
 
         @keyframes fadeInUp {
@@ -279,70 +452,54 @@
 
         .hero-badge {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 10px 25px;
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border-glow);
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 500;
             margin-bottom: 30px;
             backdrop-filter: blur(10px);
-            animation: fadeInUp 1s ease-out 0.2s both;
-            transition: all 0.3s ease;
-        }
-
-        .hero-badge:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            font-family: 'Outfit', sans-serif;
         }
 
         .hero-title {
             font-family: 'Damion', cursive;
-            font-size: clamp(3rem, 10vw, 8rem);
+            font-size: 5rem;
             font-weight: 400;
-            background: linear-gradient(135deg, var(--white-primary), var(--white-dark));
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--white-bright), var(--white-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 30px;
-            line-height: 1.1;
             text-transform: lowercase;
-            animation: fadeInUp 1s ease-out 0.4s both, shimmer 3s ease-in-out infinite;
-            background-size: 200% auto;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
         }
 
         .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            font-weight: 300;
+            font-size: 1.3rem;
             color: var(--text-secondary);
-            margin-bottom: 50px;
-            max-width: 700px;
+            margin-bottom: 40px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            animation: fadeInUp 1s ease-out 0.6s both;
+            line-height: 1.8;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 18px 45px;
-            background: linear-gradient(135deg, var(--white-primary), var(--white-dark));
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--white-bright), var(--white-primary));
             color: var(--bg-black);
             text-decoration: none;
+            border-radius: 50px;
             font-weight: 600;
             font-size: 1.1rem;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 1s ease-out 0.8s both;
+            border: none;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
         }
 
         .cta-button::before {
@@ -362,111 +519,77 @@
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
         }
 
         .scroll-indicator {
             position: absolute;
-            bottom: 50px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 10px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
             opacity: 0.5;
             transition: opacity 0.3s ease;
-            animation: bounce 2s infinite;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
+        .scroll-indicator span {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Outfit', sans-serif;
         }
 
         .scroll-arrow {
-            width: 24px;
-            height: 24px;
-            border-left: 2px solid currentColor;
-            border-bottom: 2px solid currentColor;
-            transform: rotate(-45deg);
-            animation: arrowBounce 2s infinite;
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to bottom, var(--white-primary), transparent);
+            animation: scrollDown 2s infinite;
         }
 
-        @keyframes arrowBounce {
-            0%, 20%, 50%, 80%, 100% { transform: rotate(-45deg) translateY(0); }
-            40% { transform: rotate(-45deg) translateY(5px); }
-            60% { transform: rotate(-45deg) translateY(3px); }
+        @keyframes scrollDown {
+            0%, 100% { opacity: 0; transform: translateY(-10px); }
+            50% { opacity: 1; transform: translateY(0); }
         }
 
         .section-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 60px;
             text-align: center;
-            margin-bottom: 80px;
-            background: linear-gradient(135deg, var(--white-primary), var(--white-dark));
+            background: linear-gradient(135deg, var(--white-bright), var(--white-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            position: relative;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--white-primary), transparent);
-            border-radius: 2px;
-            animation: expandWidth 1s ease-out 0.5s both;
-        }
-
-        @keyframes expandWidth {
-            from { width: 0; }
-            to { width: 100px; }
+            font-family: 'Outfit', sans-serif;
         }
 
         .about-section {
-            padding: 150px 0;
-            position: relative;
+            padding: 120px 0;
         }
 
         .about-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
+            border-radius: 20px;
             padding: 60px;
             backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            animation: fadeInUp 0.8s ease-out;
+            transition: all 0.3s ease;
         }
 
         .about-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
             box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .about-content p {
             font-size: 1.2rem;
-            line-height: 1.8;
+            line-height: 2;
             color: var(--text-secondary);
             margin-bottom: 25px;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .about-content p:last-child {
@@ -476,52 +599,34 @@
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 100px 0;
+            gap: 40px;
+            margin: 80px 0;
         }
 
         .stat-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 50px 30px;
             text-align: center;
-            transition: all 0.4s ease;
-            animation: fadeInUp 0.8s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .stat-card:hover::before {
-            opacity: 1;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .stat-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .stat-number {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--white-primary), var(--white-dark));
+            background: linear-gradient(135deg, var(--white-bright), var(--white-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-family: 'Outfit', sans-serif;
         }
 
@@ -532,7 +637,7 @@
         }
 
         .pricing {
-            padding: 150px 0;
+            padding: 120px 0;
         }
 
         .pricing-grid {
@@ -543,95 +648,93 @@
         }
 
         .price-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
+            border-radius: 20px;
             padding: 50px 40px;
+            text-align: center;
+            transition: all 0.3s ease;
             position: relative;
-            transition: all 0.4s ease;
-            animation: fadeInUp 0.8s ease-out;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .price-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .price-card:hover::before {
-            left: 100%;
+            opacity: 1;
         }
 
         .price-card:hover {
-            transform: translateY(-15px) scale(1.02);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.15);
             border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 25px 70px rgba(255, 255, 255, 0.15);
         }
 
         .price-card.featured {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
+            border-color: var(--white-bright);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
         }
 
         .price-badge {
             display: inline-block;
             padding: 8px 20px;
-            background: linear-gradient(135deg, var(--white-primary), var(--white-dark));
+            background: linear-gradient(135deg, var(--white-bright), var(--white-primary));
             color: var(--bg-black);
-            border-radius: 20px;
+            border-radius: 50px;
             font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'Outfit', sans-serif;
         }
 
         .price-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
             color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
         }
 
         .price-amount {
-            font-size: 3.5rem;
+            font-size: 2rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--white-primary), var(--white-dark));
+            color: var(--text-primary);
+            margin: 20px 0;
+            background: linear-gradient(135deg, var(--white-bright), var(--white-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 20px;
-            font-family: 'Outfit', sans-serif;
         }
 
         .price-description {
             color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 1.05rem;
+            line-height: 1.8;
+            font-size: 1rem;
         }
 
         .payment-note {
-            text-align: center;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            animation: fadeInUp 0.8s ease-out;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .payment-note p {
-            font-size: 1.1rem;
             color: var(--text-secondary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
         }
 
         .payment-note p:last-child {
@@ -639,56 +742,51 @@
         }
 
         .discord-server {
-            padding: 150px 0;
+            padding: 120px 0;
         }
 
         .server-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
+            border-radius: 20px;
             padding: 60px;
-            text-align: center;
-            transition: all 0.4s ease;
-            animation: fadeInUp 0.8s ease-out;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
         .server-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
             box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .server-content h3 {
-            font-family: 'Outfit', sans-serif;
             font-size: 2.5rem;
-            font-weight: 700;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--white-primary), var(--white-dark));
+            background: linear-gradient(135deg, var(--white-bright), var(--white-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-family: 'Outfit', sans-serif;
         }
 
         .server-content p {
             font-size: 1.2rem;
             color: var(--text-secondary);
-            margin-bottom: 40px;
             line-height: 1.8;
+            margin-bottom: 30px;
         }
 
         .server-stats {
             display: flex;
-            justify-content: center;
             gap: 60px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
         }
 
         .server-stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--white-primary), var(--white-dark));
+            background: linear-gradient(135deg, var(--white-bright), var(--white-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -702,14 +800,16 @@
         }
 
         .contact {
-            padding: 150px 0;
+            padding: 120px 0;
         }
 
         .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 60px;
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-            animation: fadeInUp 0.8s ease-out;
+            backdrop-filter: blur(10px);
         }
 
         .contact-text {
@@ -721,29 +821,22 @@
 
         .discord-username {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--white-primary), var(--white-dark));
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--white-bright), var(--white-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            padding: 30px;
-            margin: 40px 0;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .discord-username:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: scale(1.02);
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
         }
 
         footer {
-            padding: 60px 0;
+            padding: 40px 0;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.5);
         }
 
         footer p {
@@ -752,51 +845,51 @@
         }
 
         .footer-love {
-            color: var(--white-primary);
-            font-weight: 600;
-            animation: heartbeat 1.5s ease-in-out infinite;
+            color: var(--white-bright);
+            display: inline-block;
+            animation: heartBeat 1.5s ease-in-out infinite;
         }
 
-        @keyframes heartbeat {
+        @keyframes heartBeat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(1); }
         }
 
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 4rem;
+                font-size: 3.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
 
             .section-title {
                 font-size: 2.5rem;
             }
 
-            .about-card {
+            .about-card,
+            .server-card,
+            .contact-info {
                 padding: 40px 30px;
             }
 
+            .about-content p {
+                font-size: 1.05rem;
+            }
+
             .stat-number {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .price-card {
                 padding: 40px 30px;
             }
 
-            .server-card {
-                padding: 40px 30px;
-            }
-
-            .nav-links {
-                gap: 20px;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
+            .server-stats {
+                flex-direction: column;
+                gap: 30px;
             }
         }
     </style>
@@ -808,6 +901,32 @@
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-logo">wafflez</div>
         <div class="loading-bar"></div>
+    </div>
+
+    <div class="music-player" id="musicPlayer">
+        <img src="" alt="Album Art" class="album-art" id="albumArt">
+        <div class="song-info">
+            <div class="song-title" id="songTitle">Loading...</div>
+            <div class="song-artist" id="songArtist">Artist</div>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="time-info">
+                <span id="currentTime">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="control-btn" id="prevBtn">⏮</button>
+            <button class="control-btn play-pause" id="playPauseBtn">▶</button>
+            <button class="control-btn" id="nextBtn">⏭</button>
+        </div>
+        <div class="volume-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuST7ts70h2ZUV7OAmvO7ZGJ9t5Wxym-uj_Q&s" alt="Volume" class="volume-icon">
+            <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider">
+        </div>
     </div>
 
     <nav class="main-nav">
@@ -872,27 +991,28 @@
             <h2 class="section-title">Pricing</h2>
             <div class="pricing-grid">
                 <div class="price-card">
-                    <div class="price-badge">Popular</div>
-                    <h3>SMP Plugin</h3>
-                    <div class="price-amount">$25</div>
-                    <p class="price-description">Perfect for basic survival servers. Custom features tailored to your needs.</p>
+                    <div class="price-badge">SMP Plugins</div>
+                    <h3>Simple to Complex</h3>
+                    <div class="price-amount">$5 - $50+</div>
+                    <p class="price-description">Custom features for survival servers - from basic mechanics to advanced systems.</p>
                 </div>
                 <div class="price-card featured">
-                    <div class="price-badge">Best Value</div>
-                    <h3>Event Plugin</h3>
-                    <div class="price-amount">$35</div>
-                    <p class="price-description">Custom events that wow your players. Mini-games and competitions included.</p>
+                    <div class="price-badge">Event Plugins</div>
+                    <h3>All Event Types</h3>
+                    <div class="price-amount">$10 - $70+</div>
+                    <p class="price-description">Custom events that wow your players - mini-games, competitions, full event systems.</p>
                 </div>
                 <div class="price-card">
-                    <div class="price-badge">Pro Tier</div>
-                    <h3>Multiple Plugins</h3>
-                    <div class="price-amount">$50+</div>
-                    <p class="price-description">Complete plugin packages. Complex systems with interconnected features.</p>
+                    <div class="price-badge">Custom Work</div>
+                    <h3>Anything Else</h3>
+                    <div class="price-amount">Negotiable</div>
+                    <p class="price-description">Whatever plugin you need - pricing depends on complexity and requirements.</p>
                 </div>
             </div>
             <div class="payment-note">
                 <p>💳 <strong>Payment:</strong> CashApp Required</p>
                 <p>📝 <strong>Note:</strong> I'm a Skript developer, currently learning Java!</p>
+                <p>⚠️ <strong>Prices may be negotiated</strong> - these can change at any point and I might give you a price that doesn't match here, that's because it might be easier or harder for me to code</p>
             </div>
         </div>
     </section>
@@ -943,37 +1063,45 @@
     </footer>
 
     <script>
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
         window.addEventListener('load', function() {
             setTimeout(function() {
                 document.getElementById('loadingScreen').classList.add('hidden');
-            }, 1500);
+                if (!isMobile) {
+                    setTimeout(function() {
+                        const musicPlayer = document.getElementById('musicPlayer');
+                        if (musicPlayer) {
+                            musicPlayer.classList.add('loaded');
+                        }
+                    }, 500);
+                }
+            }, 800);
         });
 
         let mouseX = 0;
         let mouseY = 0;
 
-        document.addEventListener('mousemove', function(e) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            const glow = document.body;
-            glow.style.setProperty('--mouse-x', mouseX + 'px');
-            glow.style.setProperty('--mouse-y', mouseY + 'px');
-            
-            const glowElement = window.getComputedStyle(glow, '::after');
-            glow.classList.add('mouse-active');
-        });
+        if (!isMobile) {
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                const glow = document.body;
+                glow.style.setProperty('--mouse-x', mouseX + 'px');
+                glow.style.setProperty('--mouse-y', mouseY + 'px');
+                glow.classList.add('mouse-active');
+            });
 
-        function updateGlowPosition() {
-            document.body.style.setProperty('--mouse-x', mouseX + 'px');
-            document.body.style.setProperty('--mouse-y', mouseY + 'px');
-            requestAnimationFrame(updateGlowPosition);
+            function updateGlowPosition() {
+                document.body.style.setProperty('--mouse-x', mouseX + 'px');
+                document.body.style.setProperty('--mouse-y', mouseY + 'px');
+                requestAnimationFrame(updateGlowPosition);
+            }
+            updateGlowPosition();
         }
-        updateGlowPosition();
 
         function copyDiscord(event) {
             const discordUsername = 'itswafflez_';
-            
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(discordUsername).then(function() {
                     showCopySuccess(event.currentTarget);
@@ -993,21 +1121,18 @@
             document.body.appendChild(textArea);
             textArea.focus();
             textArea.select();
-            
             try {
                 document.execCommand('copy');
                 showCopySuccess(button);
             } catch (err) {
                 alert('Discord: ' + text);
             }
-            
             document.body.removeChild(textArea);
         }
 
         function showCopySuccess(button) {
             const originalText = button.querySelector('span').textContent;
             button.querySelector('span').textContent = 'Discord Copied to Clipboard!';
-            
             setTimeout(function() {
                 button.querySelector('span').textContent = originalText;
             }, 2000);
@@ -1037,6 +1162,114 @@
                 scrollIndicator.style.opacity = '0.5';
             }
         });
+
+        if (!isMobile) {
+            const songs = [
+                { title: "Keep Steady", artist: "sosocamo", file: "sosocamo_-_keep_steady__Official_Music_Video_.mp3", image: "keep_steady.jpg" },
+                { title: "8PM", artist: "NEMZZZ", file: "NEMZZZ_-_8PM__OFFICIAL_VIDEO_.mp3", image: "8pm.jpg" },
+                { title: "PTSD", artist: "NEMZZZ", file: "NEMZZZ_-_PTSD__OFFICIAL_VIDEO___1_.mp3", image: "ptsd.jpg" },
+                { title: "Escape", artist: "Nemzzz", file: "Nemzzz_-_Escape.mp3", image: "escape.jpg" },
+                { title: "Pink Lemonade", artist: "LeoStayTrill", file: "LeoStayTrill_-_Pink_Lemonade__Official_Music_Video_.mp3", image: "pink_lemonade.jpg" },
+                { title: "Sprinter", artist: "Central Cee x Dave", file: "Central_Cee_x_Dave_-_Sprinter__Music_Video___1_.mp3", image: "sprinter.jpg" }
+            ];
+
+            let currentSongIndex = 0;
+            let isPlaying = false;
+            const audio = new Audio();
+            const albumArt = document.getElementById('albumArt');
+            const songTitle = document.getElementById('songTitle');
+            const songArtist = document.getElementById('songArtist');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressBar = document.getElementById('progressBar');
+            const progress = document.getElementById('progress');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const volumeSlider = document.getElementById('volumeSlider');
+
+            audio.volume = 0.7;
+
+            audio.addEventListener('ended', function() {
+                nextSong();
+            });
+
+            audio.addEventListener('timeupdate', function() {
+                if (audio.duration) {
+                    const progressPercent = (audio.currentTime / audio.duration) * 100;
+                    progress.style.width = progressPercent + '%';
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                    durationEl.textContent = formatTime(audio.duration);
+                }
+            });
+
+            function loadSong(index) {
+                const song = songs[index];
+                songTitle.textContent = song.title;
+                songArtist.textContent = song.artist;
+                albumArt.src = song.image;
+                audio.src = song.file;
+                albumArt.onerror = function() {
+                    this.src = 'https://via.placeholder.com/260x140/000000/ffffff?text=' + encodeURIComponent(song.title);
+                };
+                audio.onerror = function() {
+                    console.log('Error loading audio file: ' + song.file);
+                };
+            }
+
+            function togglePlayPause() {
+                if (isPlaying) {
+                    audio.pause();
+                    playPauseBtn.textContent = '▶';
+                    isPlaying = false;
+                } else {
+                    audio.play();
+                    playPauseBtn.textContent = '⏸';
+                    isPlaying = true;
+                }
+            }
+
+            function nextSong() {
+                currentSongIndex = (currentSongIndex + 1) % songs.length;
+                loadSong(currentSongIndex);
+                if (isPlaying) {
+                    audio.play();
+                }
+            }
+
+            function prevSong() {
+                currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+                loadSong(currentSongIndex);
+                if (isPlaying) {
+                    audio.play();
+                }
+            }
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            }
+
+            function setProgress(e) {
+                const width = progressBar.clientWidth;
+                const clickX = e.offsetX;
+                const newTime = (clickX / width) * audio.duration;
+                audio.currentTime = newTime;
+            }
+
+            function updateVolume() {
+                audio.volume = volumeSlider.value / 100;
+            }
+
+            playPauseBtn.addEventListener('click', togglePlayPause);
+            nextBtn.addEventListener('click', nextSong);
+            prevBtn.addEventListener('click', prevSong);
+            progressBar.addEventListener('click', setProgress);
+            volumeSlider.addEventListener('input', updateVolume);
+
+            loadSong(currentSongIndex);
+        }
     </script>
 </body>
 </html>
