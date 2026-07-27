@@ -1016,7 +1016,7 @@ function filterServices(cat){
     source.connect(analyser);
     analyser.connect(audioCtx.destination);
     analyser.fftSize = 128;
-    analyser.smoothingTimeConstant = 0.15;
+    analyser.smoothingTimeConstant = 0.7;
     vizData = new Uint8Array(analyser.frequencyBinCount);
   }
 
@@ -1032,11 +1032,11 @@ function filterServices(cat){
     var half = w / 2;
     var barW = (half - count*gap) / count;
     var block = barW + gap;
-    var scale = 2.0;
+    var scale = 1.0;
     vizCtx.fillStyle = '#FFD873';
     for(var i=1; i<=count; i++){
       var raw = vizData[i] || 0;
-      var bh = Math.min(h, (raw / 255) * h * scale);
+      var bh = Math.min(h, (raw / 255) * h * scale * audio.volume);
       var y = h - bh;
       var xR = half + (i-1)*block;
       var xL = half - i*block;
