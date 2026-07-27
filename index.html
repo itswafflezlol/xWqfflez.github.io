@@ -278,6 +278,7 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
 .mp-panel{display:flex;flex-direction:column;gap:14px;}
 .mp-head{font-family:'DM Sans',sans-serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);font-weight:700;text-align:center;margin-left:30px;margin-right:16px;}
 .mp-head i{color:var(--gold);margin-right:6px;}
+.mp-viz{display:block;width:100%;height:48px;border-radius:8px;}
 .mp-top{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;}
 .mp-handle{cursor:grab;padding:4px;color:#8A8370;display:flex;align-items:center;}
 .mp-handle:active{cursor:grabbing;}
@@ -819,6 +820,7 @@ html[data-theme='dark'] .bbb-logo{filter:invert(1);}
     <input type="range" id="mp-volume" min="0" max="1" value="0.8" step="0.01" aria-label="Volume">
     <span id="mp-vol-pct" class="mp-vol-pct">80%</span>
   </div>
+  <canvas id="mp-viz" class="mp-viz" width="268" height="48"></canvas>
   <div class="mp-tracks" id="mp-tracks"></div>
   </div>
 </div>
@@ -880,6 +882,9 @@ function filterServices(cat){
   var toggleBtn = document.getElementById('mp-toggle');
   var trackList = document.getElementById('mp-tracks');
   var mpTab = document.getElementById('mp-tab');
+  var vizCanvas = document.getElementById('mp-viz');
+  var vizCtx = vizCanvas.getContext('2d');
+  var audioCtx, analyser, source, vizData;
 
   var current = 0;
   var isPlaying = false;
@@ -950,6 +955,8 @@ function filterServices(cat){
     extractMetadata(idx);
     renderTracks();
     if(auto){
+      initVizAudio();
+      if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
       audio.volume = 0;
       audio.play();
       isPlaying = true;
@@ -970,6 +977,8 @@ function filterServices(cat){
 
   function togglePlay(){
     if(audio.paused){
+      initVizAudio();
+      if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
       audio.volume = baseVol;
       audio.play(); isPlaying = true;
     }else{
@@ -996,6 +1005,40 @@ function filterServices(cat){
       el.addEventListener('click',function(){ loadTrack(i,true); });
       trackList.appendChild(el);
     });
+  }
+
+  function initVizAudio(){
+    if(audioCtx) return;
+    var AC = window.AudioContext || window.webkitAudioContext;
+    audioCtx = new AC();
+    analyser = audioCtx.createAnalyser();
+    source = audioCtx.createMediaElementSource(audio);
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    analyser.fftSize = 64;
+    vizData = new Uint8Array(analyser.frequencyBinCount);
+  }
+
+  function drawViz(){
+    requestAnimationFrame(drawViz);
+    var w = vizCanvas.width;
+    var h = vizCanvas.height;
+    vizCtx.clearRect(0,0,w,h);
+    if(!analyser || audio.paused) return;
+    analyser.getByteFrequencyData(vizData);
+    var count = 12;
+    var gap = 2;
+    var step = Math.floor(vizData.length / count);
+    var barW = (w - (count-1)*gap) / count;
+    for(var i=0;i<count;i++){
+      var sum=0;
+      for(var j=0;j<step;j++){ sum += vizData[i*step+j]; }
+      var bh = ((sum/step)/255) * h;
+      var x = i*(barW+gap);
+      var y = h - bh;
+      vizCtx.fillStyle = '#FFD873';
+      vizCtx.fillRect(x, y, barW, bh);
+    }
   }
 
   playBtn.addEventListener('click', togglePlay);
@@ -1043,6 +1086,7 @@ function filterServices(cat){
   }
   mpTab.addEventListener('click', function(){ player.classList.toggle('collapsed'); updateTabIcon(); });
   updateTabIcon();
+  drawViz();
 
   baseVol = parseFloat(volume.value);
   audio.volume = baseVol;
