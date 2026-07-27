@@ -276,6 +276,8 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
 .mp-tab:hover{background:#111;color:var(--gold);}
 .music-player.collapsed .mp-tab{top:7px;left:7px;}
 .mp-panel{display:flex;flex-direction:column;gap:14px;}
+.mp-head{font-family:'DM Sans',sans-serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);font-weight:700;text-align:center;margin-left:30px;margin-right:16px;}
+.mp-head i{color:var(--gold);margin-right:6px;}
 .mp-top{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;}
 .mp-handle{cursor:grab;padding:4px;color:#8A8370;display:flex;align-items:center;}
 .mp-handle:active{cursor:grabbing;}
@@ -780,12 +782,13 @@ html[data-theme='dark'] .bbb-logo{filter:invert(1);}
   </div></div></footer>
 </div>
 
-<div class="music-player collapsed" id="music-player" role="region" aria-label="Music player">
+<div class="music-player" id="music-player" role="region" aria-label="Music player">
   <button class="mp-tab" id="mp-tab" aria-label="Open music player">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
   </button>
   <div class="mp-panel">
   <audio id="mp-audio" preload="metadata"></audio>
+  <div class="mp-head"><i class="fa-solid fa-music"></i> waffles playlist</div>
   <div class="mp-top">
     <img class="mp-cover" id="mp-cover" src="images/sprinter.jpg" alt="Cover art">
     <div class="mp-info">
