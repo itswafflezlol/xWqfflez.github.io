@@ -1027,21 +1027,18 @@ function filterServices(cat){
     vizCtx.clearRect(0,0,w,h);
     if(!analyser || audio.paused) return;
     analyser.getByteFrequencyData(vizData);
-    var count = 6;
+    var count = 12;
     var gap = 2;
-    var half = w / 2;
-    var barW = (half - count*gap) / count;
+    var barW = (w - (count-1)*gap) / count;
     var block = barW + gap;
-    var scale = 1.0;
+    var scale = 1.5;
     vizCtx.fillStyle = '#FFD873';
     for(var i=1; i<=count; i++){
       var raw = vizData[i] || 0;
-      var bh = Math.min(h, (raw / 255) * h * scale * audio.volume);
+      var bh = (raw / 255) * h * scale * audio.volume;
       var y = h - bh;
-      var xR = half + (i-1)*block;
-      var xL = half - i*block;
-      vizCtx.fillRect(xR, y, barW, bh);
-      vizCtx.fillRect(xL, y, barW, bh);
+      var x = w - i*block + gap;
+      vizCtx.fillRect(x, y, barW, bh);
     }
   }
 
