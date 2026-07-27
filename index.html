@@ -785,7 +785,7 @@ html[data-theme='dark'] .bbb-logo{filter:invert(1);}
   <div class="mp-panel">
   <audio id="mp-audio" preload="metadata"></audio>
   <div class="mp-top">
-    <img class="mp-cover" id="mp-cover" src="sprinter.jpg" alt="Cover art">
+    <img class="mp-cover" id="mp-cover" src="images/sprinter.jpg" alt="Cover art">
     <div class="mp-info">
       <div class="mp-title" id="mp-title">Choose a track</div>
       <div class="mp-artist" id="mp-artist">-</div>
@@ -848,13 +848,13 @@ function filterServices(cat){
   var J = (typeof jsmediatags !== 'undefined' && jsmediatags) ? jsmediatags : null;
 
   var tracks = [
-    { file:'Central_Cee_x_Dave_-_Sprinter__Music_Video___1_.mp3', cover:'sprinter.jpg', title:'Sprinter', artist:'Central Cee x Dave' },
-    { file:'sosocamo_-_keep_steady__Official_Music_Video_.mp3', cover:'keep_steady.jpg', title:'Keep Steady', artist:'sosocamo' },
-    { file:'Calvin Harris - This Is What You Came For ft. Rihanna - Top Squad.mp3', cover:'https://imgs.search.brave.com/XbFC_x1Jv9n4SuwSIjZEvVMfU-MhjdSG498HfKRMVdY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMud2lraWEubm9j/b29raWUubmV0L3Jp/aGFubmEvaW1hZ2Vz/LzkvOTcvVGhpc19p/c19XaGF0X1lvdV9D/YW1lX2Zvci5qcGVn/L3JldmlzaW9uL2xh/dGVzdC9zY2FsZS10/by13aWR0aC1kb3du/LzI2OD9jYj0yMDIz/MDgwODA5NDMwNw', title:'This Is What You Came For', artist:'Rihanna' },
-    { file:'Black Beatles - Rae Sremmurd.mp3', cover:'https://imgs.search.brave.com/6yfnAUDWGo0VcpTRU9RGfQE6OQ5vHs9tV-fEj-eVYnk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMS5z/bmRjZG4uY29tL2Fy/dHdvcmtzLWs4VTRI/ZDFXaUZOdjNPNXot/NjZuUFlnLXQxMDgw/eDEwODAuanBn', title:'Black Beatles', artist:'Rae Sremmurd' },
-    { file:'Drake - Champagne Poetry (Audio) - DrakeVEVO.mp3', cover:'https://imgs.search.brave.com/3Yb7SeFb1pGrESV8Ao5vh_-4z4GxX10ygVirZLuufS8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/dGhlLWNvdmVyLWZv/ci1kcmFrZXMtYWxi/dW0tY2VydGlmaWVk/LWxvdmVyLWJveS0y/MDIxLXYwLWsyYWhz/aTV0cGN5YzEucG5n/P2F1dG89d2VicCZz/PWEyZGI3NTM5MTlj/NDEyMTM4ODAyYmRi/YWZmZDk0M2ZhMmIz/MTJmNjk', title:'Champagne Poetry', artist:'Drake' },
-    { file:'Drake - Controlla - Drake Media.mp3', cover:'https://imgs.search.brave.com/tkwXZdPjFttW8_C0XcM6yljFYNrueGcsShTvlmX0etw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/dWRpc2NvdmVybXVz/aWMuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE5LzA0L0Ry/YWtlLVZpZXdzLWFs/YnVtLWNvdmVyLXdl/Yi1vcHRpbWlzZWQt/ODIwLTgyMHg4MjAu/anBn', title:'Controlla', artist:'Drake' },
-    { file:'Flashing Lights - Kanye West.mp3', cover:'https://imgs.search.brave.com/Sg1a4wNue1rGpTQYk3HQjE8oeZ7oS4VZYvTDHKDzYw4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFweEdqNFJvVlMu/anBn', title:'Flashing Lights', artist:'Kanye West' }
+    { file:'music/Central_Cee_x_Dave_-_Sprinter__Music_Video___1_.mp3', cover:'images/sprinter.jpg', title:'Sprinter', artist:'Central Cee x Dave' },
+    { file:'music/sosocamo_-_keep_steady__Official_Music_Video_.mp3', cover:'images/keep_steady.jpg', title:'Keep Steady', artist:'sosocamo' },
+    { file:'music/Calvin Harris - This Is What You Came For ft. Rihanna - Top Squad.mp3', cover:'https://imgs.search.brave.com/XbFC_x1Jv9n4SuwSIjZEvVMfU-MhjdSG498HfKRMVdY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMud2lraWEubm9j/b29raWUubmV0L3Jp/aGFubmEvaW1hZ2Vz/LzkvOTcvVGhpc19p/c19XaGF0X1lvdV9D/YW1lX2Zvci5qcGVn/L3JldmlzaW9uL2xh/dGVzdC9zY2FsZS10/by13aWR0aC1kb3du/LzI2OD9jYj0yMDIz/MDgwODA5NDMwNw', title:'This Is What You Came For', artist:'Rihanna' },
+    { file:'music/Black Beatles - Rae Sremmurd.mp3', cover:'https://imgs.search.brave.com/6yfnAUDWGo0VcpTRU9RGfQE6OQ5vHs9tV-fEj-eVYnk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMS5z/bmRjZG4uY29tL2Fy/dHdvcmtzLWs4VTRI/ZDFXaUZOdjNPNXot/NjZuUFlnLXQxMDgw/eDEwODAuanBn', title:'Black Beatles', artist:'Rae Sremmurd' },
+    { file:'music/Drake - Champagne Poetry (Audio) - DrakeVEVO.mp3', cover:'https://imgs.search.brave.com/3Yb7SeFb1pGrESV8Ao5vh_-4z4GxX10ygVirZLuufS8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/dGhlLWNvdmVyLWZv/ci1kcmFrZXMtYWxi/dW0tY2VydGlmaWVk/LWxvdmVyLWJveS0y/MDIxLXYwLWsyYWhz/aTV0cGN5YzEucG5n/P2F1dG89d2VicCZz/PWEyZGI3NTM5MTlj/NDEyMTM4ODAyYmRi/YWZmZDk0M2ZhMmIz/MTJmNjk', title:'Champagne Poetry', artist:'Drake' },
+    { file:'music/Drake - Controlla - Drake Media.mp3', cover:'https://imgs.search.brave.com/tkwXZdPjFttW8_C0XcM6yljFYNrueGcsShTvlmX0etw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/dWRpc2NvdmVybXVz/aWMuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE5LzA0L0Ry/YWtlLVZpZXdzLWFs/YnVtLWNvdmVyLXdl/Yi1vcHRpbWlzZWQt/ODIwLTgyMHg4MjAu/anBn', title:'Controlla', artist:'Drake' },
+    { file:'music/Flashing Lights - Kanye West.mp3', cover:'https://imgs.search.brave.com/Sg1a4wNue1rGpTQYk3HQjE8oeZ7oS4VZYvTDHKDzYw4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFweEdqNFJvVlMu/anBn', title:'Flashing Lights', artist:'Kanye West' }
   ];
 
   var audio = document.getElementById('mp-audio');
