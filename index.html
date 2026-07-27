@@ -274,6 +274,7 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
 .music-player.collapsed .mp-panel{display:none;}
 .mp-tab{position:absolute;top:12px;left:12px;width:34px;height:34px;border-radius:8px;background:var(--gold);color:#111;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:201;box-shadow:-2px 0 8px rgba(0,0,0,0.1);transition:background-color .2s ease,color .2s ease;}
 .mp-tab:hover{background:#111;color:var(--gold);}
+.music-player.collapsed .mp-tab{top:7px;left:7px;}
 .mp-panel{display:flex;flex-direction:column;gap:14px;}
 .mp-top{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;}
 .mp-handle{cursor:grab;padding:4px;color:#8A8370;display:flex;align-items:center;}
@@ -304,6 +305,7 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
 @media(max-width:560px){
   .music-player{width:calc(100vw - 56px);padding:14px;}
   .music-player.collapsed{width:44px;height:44px;padding:0;}
+  .music-player.collapsed .mp-tab{top:5px;left:5px;}
 }
 
 /* DARK MODE */
