@@ -403,13 +403,13 @@ body { font-size: 15px; }
 nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(--border); }
 .bmark { background: linear-gradient(135deg, #FFD873, #FFE39F) !important; color: #111 !important; border-radius: 8px !important; }
 .bname { font-weight: 600; letter-spacing: -0.02em; }
-.home-hero .wrap { text-align: center; }
+.home-hero .wrap { text-align: left; }
 .home-hero h1, .page-header h2, .pfp-name, .card-name, .mp-title, .price-big { letter-spacing: -0.03em; }
 .home-hero h1 { font-weight: 800; }
 .home-hero h1 span { color: var(--gold-l); }
-.home-hero .sub { margin-left: auto; margin-right: auto; }
-.hero-btns { justify-content: center; }
-.stats-row { margin-left: auto !important; margin-right: auto !important; border-radius: 20px; background: var(--bg1) !important; border: 1px solid var(--border) !important; }
+.home-hero .sub { margin-left: 0; margin-right: 0; }
+.hero-btns { justify-content: flex-start; }
+.stats-row { margin-left: 0 !important; margin-right: 0 !important; border-radius: 20px; background: var(--bg1) !important; border: 1px solid var(--border) !important; }
 .stat-n { background: linear-gradient(135deg, var(--gold), var(--gold-l)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .btn-p, .ncta { border-radius: 9999px; background: linear-gradient(135deg, #FFD873, #FFE39F) !important; color: #111 !important; font-weight: 600; border: none !important; box-shadow: 0 10px 30px rgba(255,216,115,0.25); }
 .btn-p:hover, .ncta:hover { background: linear-gradient(135deg, #FFD873, #FFE39F) !important; color: #111 !important; opacity: 0.9; }
@@ -419,6 +419,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
 .card:hover, .sk:hover, .rev:hover { border-color: var(--gold) !important; transform: translateY(-3px); }
 .card.popular::before { background: var(--gold) !important; color: #111 !important; border: none !important; font-weight: 700; }
 .btype:hover { background: var(--gold) !important; color: #111 !important; border-color: var(--gold) !important; }
+.btype:hover i { color: #111 !important; }
 .price-line { border-color: rgba(255,216,115,0.35) !important; background: transparent !important; }
 .sk-icon { background: rgba(255,216,115,0.12) !important; border-color: rgba(255,216,115,0.25) !important; }
 .sk-icon i { color: var(--gold-l) !important; }
@@ -438,6 +439,11 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
 .mp-cover { border-color: var(--border-h) !important; }
 .bbb-logo { filter: invert(1) !important; }
 .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+</style>
+<style>
+.home-hero .pfp-wrap{justify-content:flex-start;margin-bottom:20px;}
+.home-hero .pfp{width:84px;height:84px;}
+.home-hero .pfp-name{font-size:1.4rem;}
 </style>
 </head>
 <body>
@@ -468,6 +474,13 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
 <div id="p-home" class="page show">
   <div class="home-hero">
     <div class="wrap">
+      <div class="pfp-wrap">
+        <img class="pfp" src="https://i.postimg.cc/06yp5nWP/uotgu.jpg" alt="wafflez pfp">
+        <div class="pfp-info">
+          <div class="pfp-name">wafflez</div>
+          <div class="pfp-tag">Minecraft Network Manager · itswafflez_ on Discord</div>
+        </div>
+      </div>
       <div class="mono">available · discord: itswafflez_</div>
       <h1>Minecraft<br><span>Network Manager.</span></h1>
       <p class="sub">7+ years experience building and managing Minecraft servers. Plugin configuration, Velocity proxies, custom systems, complete setups, whatever your server needs, I’ve got it covered.</p>
