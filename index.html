@@ -49,7 +49,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
 .home-hero{padding:calc(var(--nh) + 72px) 0 64px;}
 .home-hero .mono{font-family:'DM Sans',sans-serif;font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
 .home-hero .mono::before{content:'';width:18px;height:1px;background:var(--gold);}
-.home-hero h1{font-size:3.6rem;font-weight:700;letter-spacing:-0.04em;line-height:1.0;color:var(--text);margin-bottom:6px;}
+.home-hero h1{font-size:2.6rem;font-weight:700;letter-spacing:-0.03em;line-height:1.1;color:var(--text);margin-bottom:10px;}
 .home-hero h1 span{color:var(--gold-l);}
 .home-hero .sub{font-size:1rem;color:var(--muted);max-width:480px;line-height:1.7;margin-top:16px;}
 .home-hero .sub strong{color:var(--text);font-weight:500;}
@@ -113,7 +113,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
 .builds-intro{margin-top:56px;}
 .builds-intro .eyebrow{font-family:'DM Sans',sans-serif;font-size:0.67rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .builds-intro .eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);}
-.builds-intro h2{font-size:1.6rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);margin-bottom:6px;}
+.builds-intro h3{font-size:1.6rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);margin-bottom:6px;}
 .builds-intro p{font-size:0.91rem;color:var(--muted);line-height:1.7;max-width:480px;margin-bottom:22px;}
 .build-types{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
 .btype{padding:6px 13px;background:var(--bg1);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--muted);display:flex;align-items:center;gap:7px;transition:border-color 0.15s;}
@@ -128,7 +128,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
 .skills-block{margin-top:56px;}
 .skills-block .eyebrow{font-family:'DM Sans',sans-serif;font-size:0.67rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .skills-block .eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);}
-.skills-block h2{font-size:1.6rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);margin-bottom:20px;}
+.skills-block h4{font-size:1.6rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);margin-bottom:20px;}
 .sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
 .sk{padding:18px;background:var(--bg1);border:1px solid var(--border);border-radius:9px;}
 .sk-top{display:flex;align-items:center;gap:9px;margin-bottom:11px;}
@@ -231,7 +231,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;position:relative;z-ind
 body{font-size:15px;background:var(--bg);color:var(--text);}
 nav{background:rgba(255,253,246,0.96);}
 .bmark{border-radius:8px;}
-.home-hero h1,.page-header h2,.builds-intro h2,.skills-block h2,.pfp-name,.price-big{font-family:'Fraunces',serif;}
+.home-hero h1,.page-header h2,.builds-intro h3,.skills-block h4,.pfp-name,.price-big{font-family:'Fraunces',serif;}
 .home-hero h1{font-weight:700;letter-spacing:-0.03em;}
 .home-hero h1 span{color:var(--gold);}
 .stats-row{border-radius:24px;background:var(--bg1);}
@@ -378,11 +378,21 @@ html[data-theme='dark'] .bbb-logo{filter:invert(1);}
   <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/06yp5nWP/uotgu.jpg">
   <link rel="apple-touch-icon" href="https://i.postimg.cc/06yp5nWP/uotgu.jpg">
   <meta name="theme-color" content="#0a0a0e">
+  <meta name="description" content="waffles development - Minecraft Network Manager with 7+ years experience. Specializing in server setups, plugin configuration, Velocity proxies, custom Skript systems, and server optimization. Available for hire.">
+  <meta name="keywords" content="minecraft server, server management, plugin config, velocity proxy, skript development, papermc, luckperms, minecraft network, server setup">
+  <meta name="author" content="wafflez">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://xwqfflez.github.io/">
   <meta property="og:title" content="waffles development.">
-  <meta property="og:description" content="my portfolio and main website for minecraft server management, plugin config, and development.">
+  <meta property="og:description" content="Minecraft Network Manager with 7+ years experience. Server setups, plugin configuration, Velocity proxies, custom systems. Available for hire.">
   <meta property="og:image" content="https://i.postimg.cc/06yp5nWP/uotgu.jpg">
+  <meta property="og:url" content="https://xwqfflez.github.io/">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="waffles development.">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="waffles development.">
+  <meta name="twitter:description" content="Minecraft Network Manager with 7+ years experience. Server setups, plugin configuration, Velocity proxies, custom systems.">
+  <meta name="twitter:image" content="https://i.postimg.cc/06yp5nWP/uotgu.jpg">
 <style>
 :root, html[data-theme='dark'] {
   --bg: #0a0a0e;
@@ -401,30 +411,30 @@ html[data-theme='dark'] .bbb-logo{filter:invert(1);}
 .fa-solid, .fa-brands, .fa-regular, .fa-light, .fa-thin, .fa, .fas, .fab { font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important; }
 body { font-size: 15px; }
 nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(--border); }
-.bmark { background: linear-gradient(135deg, #FFD873, #FFE39F) !important; color: #111 !important; border-radius: 8px !important; }
+.bmark { background: var(--gold) !important; color: #111 !important; border-radius: 5px !important; }
 .bname { font-weight: 600; letter-spacing: -0.02em; }
 .home-hero .wrap { text-align: left; }
-.home-hero h1, .page-header h2, .pfp-name, .card-name, .mp-title, .price-big { letter-spacing: -0.03em; }
+.home-hero h1, .page-header h2, .builds-intro h3, .skills-block h4, .pfp-name, .card-name, .mp-title, .price-big { letter-spacing: -0.03em; }
 .home-hero h1 { font-weight: 800; }
 .home-hero h1 span { color: var(--gold-l); }
 .home-hero .sub { margin-left: 0; margin-right: 0; }
 .hero-btns { justify-content: flex-start; }
 .stats-row { margin-left: 0 !important; margin-right: 0 !important; border-radius: 20px; background: var(--bg1) !important; border: 1px solid var(--border) !important; }
 .stat-n { background: linear-gradient(135deg, var(--gold), var(--gold-l)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.btn-p, .ncta { border-radius: 9999px; background: linear-gradient(135deg, #FFD873, #FFE39F) !important; color: #111 !important; font-weight: 600; border: none !important; box-shadow: 0 10px 30px rgba(255,216,115,0.25); }
-.btn-p:hover, .ncta:hover { background: linear-gradient(135deg, #FFD873, #FFE39F) !important; color: #111 !important; opacity: 0.9; }
-.btn-s { border-radius: 9999px; border: 1.5px solid var(--border-h) !important; color: var(--text) !important; background: transparent !important; }
+.btn-p, .ncta { border-radius: 6px; background: var(--gold) !important; color: #111 !important; font-weight: 600; border: none !important; box-shadow: none; }
+.btn-p:hover, .ncta:hover { background: #e5c24a !important; color: #111 !important; opacity: 1; }
+.btn-s { border-radius: 6px; border: 1px solid var(--border-h) !important; color: var(--text) !important; background: transparent !important; }
 .btn-s:hover { background: rgba(255,255,255,0.05) !important; border-color: var(--gold) !important; color: var(--text) !important; }
 .card, .sk, .rev, .hire-card, .btype, .price-line, .bottom-cta, .cta-strip { border-radius: 18px; background: var(--bg1) !important; border: 1px solid var(--border) !important; }
 .card:hover, .sk:hover, .rev:hover { border-color: var(--gold) !important; transform: translateY(-3px); }
 .card.popular::before { background: var(--gold) !important; color: #111 !important; border: none !important; font-weight: 700; }
-.btype:hover { background: var(--gold) !important; color: #111 !important; border-color: var(--gold) !important; }
-.btype:hover i { color: #111 !important; }
+.btype:hover { background: rgba(255,216,115,0.08) !important; color: var(--gold) !important; border-color: rgba(255,216,115,0.5) !important; }
+.btype:hover i { color: var(--gold) !important; }
 .price-line { border-color: rgba(255,216,115,0.35) !important; background: transparent !important; }
 .sk-icon { background: rgba(255,216,115,0.12) !important; border-color: rgba(255,216,115,0.25) !important; }
 .sk-icon i { color: var(--gold-l) !important; }
 .chip { background: var(--bg1) !important; border: 1.5px solid var(--border) !important; border-radius: 9999px; }
-.chip:hover { background: var(--gold) !important; color: #111 !important; border-color: var(--gold) !important; }
+.chip:hover { background: rgba(255,216,115,0.08) !important; color: var(--gold) !important; border-color: rgba(255,216,115,0.5) !important; }
 .pfp { border-color: var(--gold) !important; }
 .slink { border-radius: 9999px; }
 .slink.on, .slink:hover { background: var(--gold) !important; color: #111 !important; }
@@ -470,6 +480,13 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
   </div>
 </nav>
 
+<noscript>
+  <style>.page{display:none;}.page#p-home{display:block;}</style>
+  <div style="padding:100px 28px;text-align:center;">
+    <h2>JavaScript Required</h2>
+    <p>This site requires JavaScript to function properly. Please enable it in your browser.</p>
+  </div>
+</noscript>
 <!-- HOME -->
 <div id="p-home" class="page show">
   <div class="home-hero">
@@ -482,7 +499,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
         </div>
       </div>
       <div class="mono">available · discord: itswafflez_</div>
-      <h1>Minecraft<br><span>Network Manager.</span></h1>
+      <h1>Minecraft <span>Network Manager</span></h1>
       <p class="sub">7+ years experience building and managing Minecraft servers. Plugin configuration, Velocity proxies, custom systems, complete setups, whatever your server needs, I’ve got it covered.</p>
       <div class="hero-btns">
         <button class="btn-p" onclick="go('work')">View Work</button>
@@ -499,7 +516,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
   <div class="wrap">
     <div class="builds-intro">
       <div class="eyebrow">what i build</div>
-      <h2>Server types</h2>
+      <h3>Server types</h3>
       <p>Full setups, working out the box. Not just installed, configured, tested, and ready for players.</p>
       <div class="build-types">
         <span class="btype"><i class="fa-solid fa-tree"></i>Survival SMP</span>
@@ -523,7 +540,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
 
     <div class="skills-block">
       <div class="eyebrow">what i do</div>
-      <h2>Skills</h2>
+      <h4>Skills</h4>
       <div class="sk-grid">
         <div class="sk"><div class="sk-top"><div class="sk-icon"><i class="fa-solid fa-network-wired"></i></div><div class="sk-name">Network Management</div></div><div class="sk-items"><div class="sk-item">Velocity proxy setup</div><div class="sk-item">Player routing, load balancing</div><div class="sk-item">Cross-server plugin config</div></div></div>
         <div class="sk"><div class="sk-top"><div class="sk-icon"><i class="fa-solid fa-puzzle-piece"></i></div><div class="sk-name">Plugin Config</div></div><div class="sk-items"><div class="sk-item">Economy systems (EssX)</div><div class="sk-item">LuckPerms permissions</div><div class="sk-item">Combat, protection, anti-cheat</div></div></div>
@@ -835,7 +852,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <p>Premium downloadable resources for your Minecraft server.</p>
     </div>
     <div class="card reveal" style="text-align:center;padding:48px 28px;max-width:600px;margin:0 auto;">
-      <img class="bbb-logo" src="https://cdn.simpleicons.org/builtbybit/000000" alt="BuiltByBit" onerror="this.style.display='none'">
+      <img class="bbb-logo" src="https://cdn.simpleicons.org/builtbybit/000000" alt="BuiltByBit logo" onerror="this.style.display='none'">
       <h3 style="font-size:1.4rem;font-weight:700;margin-bottom:8px;">My Pre-Made Plugins, Configs, and Setups</h3>
       <p style="color:var(--muted);margin-bottom:24px;">Stay tuned, products will be listed here soon.</p>
       <button class="btn-p" onclick="window.open('https://builtbybit.com/members/xwqfflez.488494/','_blank')">Visit BuiltByBit Profile</button>
@@ -894,9 +911,14 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
   </div>
 </div>
 
+<!--
+  For better debugging and source map support, consider moving this JavaScript to a separate .js file.
+  Inline scripts in HTML don't support traditional source maps.
+-->
 <script>
 var pages={home:'p-home',about:'p-about',work:'p-work',plugins:'p-plugins'};
 var nls={home:'nl-home',about:'nl-about',work:'nl-work',plugins:'nl-plugins'};
+var pageTitles={home:'waffles development.',about:'About | waffles development.',work:'Services | waffles development.',plugins:'Plugins | waffles development.'};
 function go(p){
   Object.keys(pages).forEach(function(k){
     var el=document.getElementById(pages[k]);
@@ -904,9 +926,11 @@ function go(p){
     var nl=document.getElementById(nls[k]);
     if(nl)nl.className='nl'+(k===p?' on':'');
   });
+  if(pageTitles[p]) document.title = pageTitles[p];
   window.scrollTo(0,0);
 }
 var slinks={all:null,setup:'sec-setup',config:'sec-config',dev:'sec-dev',network:'sec-network'};
+document.title = pageTitles.home;
 function filterServices(cat){
   Object.keys(slinks).forEach(function(k){
     var btn=document.getElementById('sl-'+k);
@@ -992,6 +1016,7 @@ function filterServices(cat){
   function extractMetadata(idx){
     if(!J) return;
     var t = tracks[idx];
+    if(!t || !t.file) return;
     try{
       J.read(t.file,{
         onSuccess:function(tag){
@@ -1006,9 +1031,9 @@ function filterServices(cat){
             artist.textContent = t.artist || '-';
           }
         },
-        onError:function(err){ console.log('metadata', err); }
+        onError:function(err){}
       });
-    }catch(e){ console.log(e); }
+    }catch(e){}
   }
 
   function loadTrack(idx, auto){
@@ -1070,7 +1095,7 @@ function filterServices(cat){
     tracks.forEach(function(t,i){
       var el = document.createElement('div');
       el.className = 'mp-track'+(i===current?' active':'');
-      el.innerHTML = '<img src="'+t.cover+'" alt=""><span>'+t.artist+', '+t.title+'</span>';
+      el.innerHTML = '<img src="'+t.cover+'" alt="'+t.title+' album cover"><span>'+t.artist+', '+t.title+'</span>';
       el.addEventListener('click',function(){ loadTrack(i,true); });
       trackList.appendChild(el);
     });
@@ -1078,15 +1103,19 @@ function filterServices(cat){
 
   function initVizAudio(){
     if(audioCtx) return;
-    var AC = window.AudioContext || window.webkitAudioContext;
-    audioCtx = new AC();
-    analyser = audioCtx.createAnalyser();
-    source = audioCtx.createMediaElementSource(audio);
-    source.connect(analyser);
-    analyser.connect(audioCtx.destination);
-    analyser.fftSize = 128;
-    analyser.smoothingTimeConstant = 0.9;
-    vizData = new Uint8Array(analyser.frequencyBinCount);
+    try{
+      var AC = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AC();
+      analyser = audioCtx.createAnalyser();
+      source = audioCtx.createMediaElementSource(audio);
+      source.connect(analyser);
+      analyser.connect(audioCtx.destination);
+      analyser.fftSize = 128;
+      analyser.smoothingTimeConstant = 0.9;
+      vizData = new Uint8Array(analyser.frequencyBinCount);
+    }catch(e){
+      console.warn('Audio context initialization failed:', e);
+    }
   }
 
   function drawViz(){
