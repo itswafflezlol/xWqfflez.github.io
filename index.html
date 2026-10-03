@@ -8,7 +8,7 @@
 <script src="https://unpkg.com/jsmediatags@3.9.5/dist/jsmediatags.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script>var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);if(location.protocol!=='https:'&&location.hostname!=='localhost'){location.replace('https:'+location.href.substring(location.protocol.length));}</script>
+<script>var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);if(location.protocol!=='https:' && location.hostname!=='localhost'){location.replace('https:'+location.href.substring(location.protocol.length));}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -224,7 +224,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;position:relative;z-ind
 .breadcrumbs{font-size:0.72rem;}
 }
 
-/* WAFFLES BRAND OVERRIDES */
+/* WAFFLES BRAND OVERRIDES - LIGHT MODE DEFAULT */
 :root{
   --bg:#FFFDF6;
   --bg1:#FFFFFF;
@@ -237,6 +237,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;position:relative;z-ind
   --gold:#FFD873;
   --gold-l:#FFD873;
   --green:#1ec87a;
+  color-scheme:light;
 }
 body{font-size:15px;background:var(--bg);color:var(--text);}
 nav{background:rgba(255,253,246,0.96);}
@@ -277,48 +278,73 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
 .footer-links button{font-weight:600;color:var(--text);}
 .footer-links button:hover{background:var(--gold);color:#111;}
 .footer-copy{color:var(--muted);}
+.music-player{background:rgba(255,255,255,0.94);border-color:rgba(0,0,0,0.06);}
+.mp-cover{border-color:#111;}
+.mp-title{color:#111;}
+.mp-artist{color:#8A8370;}
+.mp-toggle{border-color:#111;color:#111;}
+.mp-btn{background:#fff;border-color:#111;color:#111;}
+.mp-play{background:var(--gold);border-color:#111;color:#111;}
+.mp-progress input,.mp-volume input{background:#FFFDF6;border-color:#111;}
+.mp-progress input::-webkit-slider-thumb,.mp-volume input::-webkit-slider-thumb{border-color:#111;}
+.mp-progress input::-moz-range-thumb,.mp-volume input::-moz-range-thumb{border-color:#111;}
+.mp-time{color:#8A8370;}
+.mp-vol-pct{color:#111;}
+.mp-tracks{border-color:#111;}
+.mp-track:hover,.mp-track.active{background:var(--gold);color:#111;border-color:#111;}
+.mp-track img{border-color:#111;}
+.mp-volume svg{color:#111;}
+.bbb-logo{filter:invert(1)!important;}
 
 /* MUSIC PLAYER */
-.music-player{position:fixed;right:0;top:50%;transform:translateY(-50%);transition:transform .5s cubic-bezier(0.22,1,0.36,1);z-index:200;width:300px;max-width:calc(100vw - 40px);background:rgba(255,255,255,0.94);backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(0,0,0,0.06);border-radius:20px 0 0 20px;padding:16px;display:flex;flex-direction:column;gap:14px;box-shadow:-12px 8px 40px rgba(0,0,0,0.12);user-select:none;font-family:'Figtree',sans-serif;}
-.music-player.collapsed{height:48px;padding:0;border-radius:12px 0 0 12px;box-shadow:none;background:rgba(255,255,255,0.96);transform:translateX(calc(100% - 48px)) translateY(-50%);}
+.music-player{position:fixed;right:0;top:50%;transform:translateY(-50%);transition:transform .5s cubic-bezier(0.22,1,0.36,1);z-index:200;width:320px;max-width:calc(100vw - 40px);background:rgba(255,255,255,0.96);backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(0,0,0,0.08);border-radius:24px 0 0 24px;padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:-8px 12px 40px rgba(0,0,0,0.15);user-select:none;font-family:'Figtree',sans-serif;}
+.music-player.collapsed{height:52px;padding:0;border-radius:16px 0 0 16px;box-shadow:none;background:rgba(255,255,255,0.98);transform:translateX(calc(100% - 52px)) translateY(-50%);}
 .music-player.collapsed .mp-panel{display:none;}
-.mp-tab{position:absolute;top:12px;left:12px;width:34px;height:34px;border-radius:8px;background:var(--gold);color:#111;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:201;box-shadow:-2px 0 8px rgba(0,0,0,0.1);transition:background-color .2s ease,color .2s ease;}
-.mp-tab:hover{background:#111;color:var(--gold);}
-.music-player.collapsed .mp-tab{top:7px;left:7px;}
-.mp-panel{display:flex;flex-direction:column;gap:14px;}
-.mp-head{font-family:'DM Sans',sans-serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);font-weight:700;text-align:center;margin-left:30px;margin-right:16px;}
+.mp-tab{position:absolute;top:14px;left:14px;width:38px;height:38px;border-radius:10px;background:var(--gold);color:#111;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:201;box-shadow:-2px 0 10px rgba(0,0,0,0.12);transition:all .25s ease;font-size:1rem;}
+.mp-tab:hover{background:#111;color:var(--gold);transform:scale(1.05);}
+.music-player.collapsed .mp-tab{top:8px;left:8px;width:36px;height:36px;}
+.mp-panel{display:flex;flex-direction:column;gap:16px;}
+.mp-head{font-family:'DM Sans',sans-serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--muted);font-weight:700;text-align:center;margin-left:45px;margin-right:10px;padding-bottom:4px;}
 .mp-head i{color:var(--gold);margin-right:6px;}
-.mp-viz{display:block;width:100%;height:48px;border-radius:8px;}
-.mp-top{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;}
-.mp-handle{cursor:grab;padding:4px;color:#8A8370;display:flex;align-items:center;}
+.mp-viz{display:block;width:100%;height:52px;border-radius:12px;background:rgba(0,0,0,0.02);}
+.mp-top{display:flex;flex-direction:column;align-items:center;gap:12px;position:relative;}
+.mp-handle{cursor:grab;padding:6px;color:var(--dim);display:flex;align-items:center;transition:color .2s;}
+.mp-handle:hover{color:var(--text);}
 .mp-handle:active{cursor:grabbing;}
-.mp-cover{width:120px;height:120px;border-radius:14px;border:1.5px solid #111;object-fit:cover;background:var(--bg);flex-shrink:0;max-width:120px;max-height:120px;}
-.mp-info{width:100%;text-align:center;}
-.mp-title{font-size:1.1rem;font-weight:700;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;font-family:'Fraunces',serif;}
-.mp-artist{font-size:0.78rem;color:#8A8370;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;}
-.mp-toggle{position:absolute;top:0;right:0;width:36px;height:36px;border:1.5px solid #111;border-radius:50%;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#111;transition:all .2s;}
-.mp-toggle:hover{background:#111;color:var(--gold);}
-.mp-controls{display:flex;align-items:center;justify-content:center;gap:12px;}
-.mp-btn{width:48px;height:48px;border-radius:50%;border:1.5px solid #111;background:#fff;color:#111;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
-.mp-btn:hover{background:#111;color:var(--gold);}
-.mp-play{width:56px;height:56px;background:var(--gold);border:2px solid #111;color:#111;font-weight:700;}
-.mp-play:hover{background:#111;color:var(--gold);}
-.mp-progress,.mp-volume{display:flex;align-items:center;gap:8px;}
-.mp-progress input,.mp-volume input{flex:1;-webkit-appearance:none;height:8px;background:#FFFDF6;border:1.5px solid #111;border-radius:9999px;outline:none;}
-.mp-progress input::-webkit-slider-thumb,.mp-volume input::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:#FFD873;border:2px solid #111;border-radius:50%;cursor:pointer;}
-.mp-progress input::-moz-range-thumb,.mp-volume input::-moz-range-thumb{width:16px;height:16px;background:#FFD873;border:2px solid #111;border-radius:50%;cursor:pointer;}
-.mp-time{display:flex;justify-content:space-between;font-size:0.72rem;color:#8A8370;font-weight:700;}
-.mp-vol-pct{font-size:0.72rem;font-weight:700;color:#111;min-width:32px;text-align:right;}
-.mp-tracks{display:none;flex-direction:column;gap:4px;max-height:180px;overflow:auto;border-top:1.5px solid #111;padding-top:8px;}
+.mp-cover{width:130px;height:130px;border-radius:16px;border:2px solid #111;object-fit:cover;background:var(--bg);flex-shrink:0;max-width:130px;max-height:130px;box-shadow:0 4px 16px rgba(0,0,0,0.1);}
+.mp-info{width:100%;text-align:center;padding:0 8px;}
+.mp-title{font-size:1.15rem;font-weight:700;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;font-family:'Fraunces',serif;letter-spacing:-0.02em;}
+.mp-artist{font-size:0.82rem;color:var(--muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;margin-top:2px;}
+.mp-toggle{position:absolute;top:0;right:0;width:40px;height:40px;border:2px solid #111;border-radius:50%;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#111;transition:all .25s ease;font-size:1rem;}
+.mp-toggle:hover{background:#111;color:var(--gold);transform:rotate(180deg);}
+.mp-controls{display:flex;align-items:center;justify-content:center;gap:16px;}
+.mp-btn{width:52px;height:52px;border-radius:50%;border:2px solid #111;background:#fff;color:#111;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s ease;font-size:1.1rem;}
+.mp-btn:hover{background:#111;color:var(--gold);transform:scale(1.05);}
+.mp-play{width:60px;height:60px;background:var(--gold);border:2.5px solid #111;color:#111;font-weight:700;font-size:1.3rem;}
+.mp-play:hover{background:#111;color:var(--gold);transform:scale(1.08);}
+.mp-progress,.mp-volume{display:flex;align-items:center;gap:10px;}
+.mp-progress input,.mp-volume input{flex:1;-webkit-appearance:none;height:10px;background:var(--bg1);border:2px solid #111;border-radius:9999px;outline:none;cursor:pointer;}
+.mp-progress input::-webkit-slider-thumb,.mp-volume input::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:#FFD873;border:2.5px solid #111;border-radius:50%;cursor:pointer;transition:transform .15s;}
+.mp-progress input::-webkit-slider-thumb:hover,.mp-volume input::-webkit-slider-thumb:hover{transform:scale(1.1);}
+.mp-progress input::-moz-range-thumb,.mp-volume input::-moz-range-thumb{width:18px;height:18px;background:#FFD873;border:2.5px solid #111;border-radius:50%;cursor:pointer;}
+.mp-time{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--muted);font-weight:600;}
+.mp-vol-pct{font-size:0.75rem;font-weight:600;color:#111;min-width:36px;text-align:right;}
+.mp-tracks{display:none;flex-direction:column;gap:6px;max-height:200px;overflow:auto;border-top:2px solid #111;padding-top:12px;}
 .mp-tracks.open{display:flex;}
-.mp-track{padding:8px 10px;border-radius:10px;display:flex;align-items:center;gap:10px;cursor:pointer;border:1.5px solid transparent;transition:all .15s;}
-.mp-track:hover,.mp-track.active{background:var(--gold);border-color:#111;}
-.mp-track img{width:32px;height:32px;border-radius:6px;border:1px solid #111;object-fit:cover;}
-.mp-track span{flex:1;font-size:0.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mp-track{padding:10px 12px;border-radius:12px;display:flex;align-items:center;gap:12px;cursor:pointer;border:2px solid transparent;transition:all .2s ease;}
+.mp-track:hover,.mp-track.active{background:var(--gold);border-color:#111;transform:translateX(-4px);}
+.mp-track img{width:36px;height:36px;border-radius:8px;border:2px solid #111;object-fit:cover;}
+.mp-track span{flex:1;font-size:0.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#111;}
+.mp-track.active span{color:#111;}
 @media(max-width:560px){
-  .music-player{width:calc(100vw - 56px);padding:14px;}
-  .music-player.collapsed{width:44px;height:44px;padding:0;}
-  .music-player.collapsed .mp-tab{top:5px;left:5px;}
+  .music-player{width:calc(100vw - 56px);padding:16px;border-radius:20px 0 0 20px;}
+  .music-player.collapsed{width:48px;height:48px;padding:0;border-radius:14px 0 0 14px;}
+  .music-player.collapsed .mp-tab{top:6px;left:6px;width:36px;height:36px;}
+  .mp-cover{width:100px;height:100px;max-width:100px;max-height:100px;}
+  .mp-btn{width:46px;height:46px;}
+  .mp-play{width:52px;height:52px;}
+  .mp-title{font-size:1rem;}
+  .mp-artist{font-size:0.75rem;}
 }
 
 /* DARK MODE */
@@ -336,6 +362,7 @@ html[data-theme='dark']{
   --green:#1ec87a;
   color-scheme:dark;
 }
+html[data-theme='dark'] body{background:var(--bg);color:var(--text);}
 html[data-theme='dark'] nav{background:var(--bg);}
 html[data-theme='dark'] .btn-s{border-color:var(--text);color:var(--text);}
 html[data-theme='dark'] .btn-s:hover,
@@ -343,8 +370,8 @@ html[data-theme='dark'] .btn-p:hover,
 html[data-theme='dark'] .ncta:hover{background:#111;color:var(--gold);border:1.5px solid var(--gold);}
 html[data-theme='dark'] .btype:hover{background:#111;color:var(--gold);border-color:var(--gold);}
 html[data-theme='dark'] .card:hover{border-color:var(--gold);}
-html[data-theme='dark'] .music-player{background:rgba(18,18,18,0.94);border-color:rgba(255,253,246,0.08);box-shadow:-12px 8px 40px rgba(0,0,0,0.4);}
-html[data-theme='dark'] .mp-cover{border-color:var(--text);}
+html[data-theme='dark'] .music-player{background:rgba(18,18,18,0.96);border-color:rgba(255,253,246,0.08);box-shadow:-8px 12px 40px rgba(0,0,0,0.5);}
+html[data-theme='dark'] .mp-cover{border-color:var(--text);box-shadow:0 4px 16px rgba(0,0,0,0.3);}
 html[data-theme='dark'] .mp-title{color:var(--text);}
 html[data-theme='dark'] .mp-artist{color:var(--muted);}
 html[data-theme='dark'] .mp-toggle{border-color:var(--text);color:var(--text);}
@@ -366,6 +393,8 @@ html[data-theme='dark'] .mp-tracks{border-color:var(--text);}
 html[data-theme='dark'] .mp-track:hover,
 html[data-theme='dark'] .mp-track.active{background:var(--gold);color:#111;border-color:var(--text);}
 html[data-theme='dark'] .mp-track img{border-color:var(--text);}
+html[data-theme='dark'] .mp-viz{background:rgba(255,255,255,0.02);}
+html[data-theme='dark'] .bbb-logo{filter:invert(1)!important;}
 
 /* SOCIALS & ANIMATIONS */
 .socials{display:flex;align-items:center;gap:10px;margin-left:auto;margin-right:8px;}
@@ -569,7 +598,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
         <div class="sk"><div class="sk-top"><div class="sk-icon"><i class="fa-solid fa-code"></i></div><div class="sk-name">Skript Dev</div></div><div class="sk-items"><div class="sk-item">Custom gameplay mechanics</div><div class="sk-item">Event systems, boss fights</div><div class="sk-item">Inventories, kit logic</div></div></div>
         <div class="sk"><div class="sk-top"><div class="sk-icon"><i class="fa-solid fa-server"></i></div><div class="sk-name">Server Optimization</div></div><div class="sk-items"><div class="sk-item">PaperMC config tuning</div><div class="sk-item">JVM startup flags</div><div class="sk-item">TPS troubleshooting</div></div></div>
         <div class="sk"><div class="sk-top"><div class="sk-icon"><i class="fa-solid fa-users"></i></div><div class="sk-name">Community Ops</div></div><div class="sk-items"><div class="sk-item">Staff team management</div><div class="sk-item">Discord server setup</div><div class="sk-item">Player experience design</div></div></div>
-        <div class="sk"><div class="sk-top"><div class="sk-icon"><i class="fa-solid fa-wrench"></i></div><div class="sk-name">Tools &amp; Stack</div></div><div class="sk-items"><div class="sk-item">PaperMC, Spigot, Velocity</div><div class="sk-item">FAWE, WorldEdit, ItemsAdder, Nexo, Oraxen</div><div class="sk-item">PlaceholderAPI, TAB, Vault</div></div></div>
+        <div class="sk"><div class="sk-top"><div class="sk-icon"><i class="fa-solid fa-wrench"></i></div><div class="sk-name">Tools & Stack</div></div><div class="sk-items"><div class="sk-item">PaperMC, Spigot, Velocity</div><div class="sk-item">FAWE, WorldEdit, ItemsAdder, Nexo, Oraxen</div><div class="sk-item">PlaceholderAPI, TAB, Vault</div></div></div>
       </div>
     </div>
   </div>
@@ -607,7 +636,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
           <div class="card-name">Full Server Setup</div>
           <div class="card-price">$50-$150 <span class="unit">per setup</span></div>
           <div class="card-features">
-            <div class="feat">Custom plugin stack installed &amp; configured</div>
+            <div class="feat">Custom plugin stack installed & configured</div>
             <div class="feat">Permissions, economy, protection</div>
             <div class="feat">PaperMC performance tuning</div>
             <div class="feat">Ready to open to players</div>
@@ -620,7 +649,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
           <div class="card-features">
             <div class="feat">Velocity proxy configured</div>
             <div class="feat">Multiple game servers interconnected</div>
-            <div class="feat">Player routing &amp; load balancing</div>
+            <div class="feat">Player routing & load balancing</div>
             <div class="feat">Cross-server plugin management</div>
           </div>
           <button class="card-cta" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')">Get a Quote <i class="fa-solid fa-arrow-right"></i></button>
@@ -631,8 +660,8 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
           <div class="card-features">
             <div class="feat">Economy setup (EssX)</div>
             <div class="feat">LuckPerms permission system</div>
-            <div class="feat">Combat, chat &amp; moderation</div>
-            <div class="feat">Conflict resolution &amp; testing</div>
+            <div class="feat">Combat, chat & moderation</div>
+            <div class="feat">Conflict resolution & testing</div>
           </div>
           <button class="card-cta" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')">Get a Quote <i class="fa-solid fa-arrow-right"></i></button>
         </div>
@@ -642,7 +671,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
           <div class="card-features">
             <div class="feat">PaperMC config tuning</div>
             <div class="feat">JVM startup flag optimization</div>
-            <div class="feat">TPS &amp; lag diagnostics</div>
+            <div class="feat">TPS & lag diagnostics</div>
             <div class="feat">Plugin conflict auditing</div>
           </div>
           <button class="card-cta" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')">Get a Quote <i class="fa-solid fa-arrow-right"></i></button>
@@ -653,16 +682,16 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
           <div class="card-features">
             <div class="feat">Custom gameplay mechanics</div>
             <div class="feat">Event systems with boss fights</div>
-            <div class="feat">Kit selection &amp; inventory logic</div>
+            <div class="feat">Kit selection & inventory logic</div>
             <div class="feat">Rewards, countdowns, chat formatting</div>
           </div>
           <button class="card-cta" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')">Get a Quote <i class="fa-solid fa-arrow-right"></i></button>
         </div>
         <div class="card">
-          <div class="card-name">Skript Fixes &amp; Edits</div>
+          <div class="card-name">Skript Fixes & Edits</div>
           <div class="card-price">$15-$40 <span class="unit">per job</span></div>
           <div class="card-features">
-            <div class="feat">Debug &amp; fix broken scripts</div>
+            <div class="feat">Debug & fix broken scripts</div>
             <div class="feat">Extend existing mechanics</div>
             <div class="feat">Performance improvements</div>
           </div>
@@ -672,8 +701,8 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
           <div class="card-name">Ongoing Server Management</div>
           <div class="card-price">Custom <span class="unit">/ talk to me</span></div>
           <div class="card-features">
-            <div class="feat">Regular maintenance &amp; updates</div>
-            <div class="feat">Monitoring &amp; issue response</div>
+            <div class="feat">Regular maintenance & updates</div>
+            <div class="feat">Monitoring & issue response</div>
             <div class="feat">Backup management</div>
             <div class="feat">New feature implementation</div>
           </div>
@@ -683,8 +712,8 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
           <div class="card-name">Discord Server Setup</div>
           <div class="card-price">$15-$35 <span class="unit">per server</span></div>
           <div class="card-features">
-            <div class="feat">Channel structure &amp; roles</div>
-            <div class="feat">Channel permissions &amp; security</div>
+            <div class="feat">Channel structure & roles</div>
+            <div class="feat">Channel permissions & security</div>
             <div class="feat">Minecraft webhook integration</div>
           </div>
           <button class="card-cta" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')">Get a Quote <i class="fa-solid fa-arrow-right"></i></button>
@@ -766,6 +795,36 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
           <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">Worked with countless SMPs to build custom mechanics, from simple features to full event systems with bosses, rewards, and countdowns. All built to spec.</p>
           <div style="font-size:0.72rem;color:var(--dim);font-family:'DM Sans',sans-serif;display:flex;justify-content:space-between;">
             <span>skript, plugins, custom</span><span style="color:var(--muted);">Developer</span>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">
+            <div style="width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;overflow:hidden;flex-shrink:0;">
+              <img src="https://i.postimg.cc/yDVRnnz3/heart-(1).png" alt="ElytraSMP logo" style="width:100%;height:100%;object-fit:cover;border-radius:8px;max-width:40px;max-height:40px;" onerror="this.parentElement.textContent='E'">
+            </div>
+            <div>
+              <div style="font-size:0.92rem;font-weight:600;color:var(--text);">ElytraSMP</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Shop Survival</div>
+            </div>
+          </div>
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">My personal project focused on shop survival mechanics with custom economy systems and trading features.</p>
+          <div style="font-size:0.72rem;color:var(--dim);font-family:'DM Sans',sans-serif;display:flex;justify-content:space-between;">
+            <span>survival, shop, economy</span><span style="color:var(--muted);">Owner</span>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">
+            <div style="width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;overflow:hidden;flex-shrink:0;">
+              <img src="https://i.postimg.cc/06jw1Qjm/Pirate-Kits.png" alt="CorpseSMP logo" style="width:100%;height:100%;object-fit:cover;border-radius:8px;max-width:40px;max-height:40px;" onerror="this.parentElement.textContent='C'">
+            </div>
+            <div>
+              <div style="font-size:0.92rem;font-weight:600;color:var(--text);">CorpseSMP</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Private SMP</div>
+            </div>
+          </div>
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">Private SMP where I developed custom mods and plugins that interact with each other for unique gameplay mechanics.</p>
+          <div style="font-size:0.72rem;color:var(--dim);font-family:'DM Sans',sans-serif;display:flex;justify-content:space-between;">
+            <span>mod dev, plugins, private</span><span style="color:var(--muted);">Developer</span>
           </div>
         </div>
       </div>
