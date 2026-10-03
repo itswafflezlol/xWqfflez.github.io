@@ -465,6 +465,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <button class="nl" id="nl-about" onclick="go('about')">About</button>
       <button class="nl" id="nl-work" onclick="go('work')">Work</button>
       <button class="nl" id="nl-plugins" onclick="go('plugins')">Plugins</button>
+      <button class="nl" id="nl-credits" onclick="go('credits')">Credits</button>
     </div>
     <div class="socials">
       <a href="https://discord.gg/A7NNfAN6c4" target="_blank" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
@@ -477,10 +478,11 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
 </nav>
 <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 <div class="mobile-menu" id="mobile-menu">
-  <button class="nl" data-page="home" onclick="go('home');closeMobileMenu();">Home</button>
-  <button class="nl" data-page="about" onclick="go('about');closeMobileMenu();">About</button>
-  <button class="nl" data-page="work" onclick="go('work');closeMobileMenu();">Work</button>
-  <button class="nl" data-page="plugins" onclick="go('plugins');closeMobileMenu();">Plugins</button>
+  <button class="nl" onclick="go('home');closeMobileMenu();">Home</button>
+  <button class="nl" onclick="go('about');closeMobileMenu();">About</button>
+  <button class="nl" onclick="go('work');closeMobileMenu();">Work</button>
+  <button class="nl" onclick="go('plugins');closeMobileMenu();">Plugins</button>
+  <button class="nl" onclick="go('credits');closeMobileMenu();">Credits</button>
   <div style="height:1px;background:var(--border);margin:8px 0;"></div>
   <button class="nl" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank');closeMobileMenu();"><i class="fa-brands fa-discord" style="margin-right:8px;"></i>Discord</button>
   <button class="nl" onclick="window.open('https://github.com/itswafflezlol/','_blank');closeMobileMenu();"><i class="fa-brands fa-github" style="margin-right:8px;"></i>GitHub</button>
@@ -566,6 +568,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <button onclick="go('about')">About</button>
       <button onclick="go('work')">Work</button>
       <button onclick="go('plugins')">Plugins</button>
+      <button onclick="go('credits')">Credits</button>
     </div>
     <span class="footer-copy">&copy; 2026 waffles development.</span>
   </div></div></footer>
@@ -806,6 +809,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <button onclick="go('about')">About</button>
       <button onclick="go('work')">Work</button>
       <button onclick="go('plugins')">Plugins</button>
+      <button onclick="go('credits')">Credits</button>
     </div>
     <span class="footer-copy">&copy; 2026 waffles development.</span>
   </div></div></footer>
@@ -881,6 +885,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <button onclick="go('about')">About</button>
       <button onclick="go('work')">Work</button>
       <button onclick="go('plugins')">Plugins</button>
+      <button onclick="go('credits')">Credits</button>
     </div>
     <span class="footer-copy">&copy; 2026 waffles development.</span>
   </div></div></footer>
@@ -912,6 +917,101 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <button onclick="go('about')">About</button>
       <button onclick="go('work')">Work</button>
       <button onclick="go('plugins')">Plugins</button>
+      <button onclick="go('credits')">Credits</button>
+    </div>
+    <span class="footer-copy">&copy; 2026 waffles development.</span>
+  </div></div></footer>
+</div>
+
+<!-- CREDITS -->
+<div id="p-credits" class="page">
+  <div class="wrap" style="padding-top:calc(var(--nh) + 52px);padding-bottom:72px;">
+    <div class="breadcrumbs">
+      <span class="breadcrumb-item"><button onclick="go('home')" style="background:none;border:none;color:inherit;cursor:pointer;font-family:inherit;font-size:inherit;">Home</button></span>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-item active">Credits</span>
+    </div>
+    <div class="page-header">
+      <div class="eyebrow">credits</div>
+      <h2>Tools & Libraries</h2>
+      <p>The technologies and resources used to build this website.</p>
+    </div>
+    <div class="cards" style="grid-template-columns:1fr 1fr;">
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <img src="https://cdn.simpleicons.org/lenis/000000" alt="Lenis logo" style="width:40px;height:40px;" onerror="this.style.display='none'">
+          <div>
+            <div style="font-size:0.95rem;font-weight:700;color:var(--text);">Lenis</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Smooth Scrolling</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">Smooth scroll library for buttery smooth scrolling experience on the web.</p>
+        <button class="card-cta" onclick="window.open('https://lenis.dev','_blank')">Visit <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <img src="https://cdn.simpleicons.org/animejs/000000" alt="Anime.js logo" style="width:40px;height:40px;" onerror="this.style.display='none'">
+          <div>
+            <div style="font-size:0.95rem;font-weight:700;color:var(--text);">Anime.js</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Animations</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">Lightweight JavaScript animation library with a simple and powerful API.</p>
+        <button class="card-cta" onclick="window.open('https://animejs.com','_blank')">Visit <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <img src="https://cdn.simpleicons.org/fontawesome/000000" alt="Font Awesome logo" style="width:40px;height:40px;" onerror="this.style.display='none'">
+          <div>
+            <div style="font-size:0.95rem;font-weight:700;color:var(--text);">Font Awesome</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Icons</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">The internet's icon library for beautifully crafted icons.</p>
+        <button class="card-cta" onclick="window.open('https://fontawesome.com','_blank')">Visit <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <img src="https://cdn.simpleicons.org/googlefonts/000000" alt="Google Fonts logo" style="width:40px;height:40px;" onerror="this.style.display='none'">
+          <div>
+            <div style="font-size:0.95rem;font-weight:700;color:var(--text);">Google Fonts</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Typography</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">Font library providing Poppins, DM Sans, Fraunces, and Figtree typefaces.</p>
+        <button class="card-cta" onclick="window.open('https://fonts.google.com','_blank')">Visit <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <img src="https://cdn.simpleicons.org/github/000000" alt="GitHub logo" style="width:40px;height:40px;" onerror="this.style.display='none'">
+          <div>
+            <div style="font-size:0.95rem;font-weight:700;color:var(--text);">GitHub Pages</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Hosting</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">Static site hosting directly from a GitHub repository.</p>
+        <button class="card-cta" onclick="window.open('https://pages.github.com','_blank')">Visit <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <img src="https://cdn.simpleicons.org/npm/000000" alt="NPM logo" style="width:40px;height:40px;" onerror="this.style.display='none'">
+          <div>
+            <div style="font-size:0.95rem;font-weight:700;color:var(--text);">jsmediatags</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Audio Metadata</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">JavaScript library for reading and writing media tags in audio files.</p>
+        <button class="card-cta" onclick="window.open('https://www.npmjs.com/package/jsmediatags','_blank')">Visit <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+  <footer><div class="wrap"><div class="footer-inner">
+    <div class="footer-links">
+      <button onclick="go('home')">Home</button>
+      <button onclick="go('about')">About</button>
+      <button onclick="go('work')">Work</button>
+      <button onclick="go('plugins')">Plugins</button>
+      <button onclick="go('credits')">Credits</button>
     </div>
     <span class="footer-copy">&copy; 2026 waffles development.</span>
   </div></div></footer>
@@ -964,9 +1064,9 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
   Inline scripts in HTML don't support traditional source maps.
 -->
 <script>
-var pages={home:'p-home',about:'p-about',work:'p-work',plugins:'p-plugins'};
-var nls={home:'nl-home',about:'nl-about',work:'nl-work',plugins:'nl-plugins'};
-var pageTitles={home:'waffles development - Minecraft Network Manager',about:'About Me - waffles development',work:'Services & Pricing - waffles development',plugins:'Plugins & Resources - waffles development'};
+var pages={home:'p-home',about:'p-about',work:'p-work',plugins:'p-plugins',credits:'p-credits'};
+var nls={home:'nl-home',about:'nl-about',work:'nl-work',plugins:'nl-plugins',credits:'nl-credits'};
+var pageTitles={home:'waffles development - Minecraft Network Manager',about:'About Me - waffles development',work:'Services & Pricing - waffles development',plugins:'Plugins & Resources - waffles development',credits:'Credits - waffles development'};
 function go(p){
   Object.keys(pages).forEach(function(k){
     var el=document.getElementById(pages[k]);
