@@ -436,12 +436,19 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
 .rev-text::before { color: var(--gold) !important; }
 .av { background: var(--gold) !important; color: #111 !important; border-color: var(--gold) !important; }
 .footer-links button:hover { background: var(--gold) !important; color: #111 !important; }
-.music-player { background: rgba(18,18,26,0.96) !important; border-color: rgba(255,255,255,0.08) !important; border-radius: 18px 0 0 18px; }
+.music-player { background: rgba(18,18,26,0.96) !important; border-color: rgba(255,255,255,0.2) !important; border-radius: 18px 0 0 18px; }
 .mp-tab { background: var(--gold) !important; color: #111 !important; }
-.mp-btn, .mp-toggle { background: var(--bg1) !important; border-color: rgba(255,255,255,0.15) !important; color: var(--text) !important; }
-.mp-btn:hover, .mp-toggle:hover { background: var(--gold) !important; color: #111 !important; border-color: rgba(255,255,255,0.15) !important; }
-.mp-play { background: var(--gold) !important; color: #111 !important; border-color: rgba(255,255,255,0.15) !important; }
-.mp-cover { border-color: rgba(255,255,255,0.15) !important; }
+.mp-btn, .mp-toggle { background: rgba(18,26,35,0.8) !important; border-color: rgba(255,255,255,0.3) !important; color: #ffffff !important; }
+.mp-btn:hover, .mp-toggle:hover { background: var(--gold) !important; color: #111 !important; border-color: rgba(255,255,255,0.3) !important; }
+.mp-play { background: var(--gold) !important; color: #111 !important; border-color: rgba(255,255,255,0.3) !important; }
+.mp-cover { border-color: rgba(255,255,255,0.3) !important; }
+.mp-title { color: #ffffff !important; }
+.mp-artist { color: rgba(255,255,255,0.7) !important; }
+.mp-time { color: rgba(255,255,255,0.7) !important; }
+.mp-vol-pct { color: #ffffff !important; }
+.mp-progress input, .mp-volume input { background: rgba(18,26,35,0.8) !important; border-color: rgba(255,255,255,0.3) !important; }
+.mp-progress input::-webkit-slider-thumb, .mp-volume input::-webkit-slider-thumb { border-color: rgba(255,255,255,0.3) !important; }
+.mp-volume svg { color: #ffffff !important; }
 .bbb-logo { filter: invert(1) !important; }
 </style>
 </head>
@@ -748,7 +755,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
         </div>
         <div class="card">
           <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">
-            <div style="width:40px;height:40px;border-radius:8px;background:rgba(212,168,32,0.15);border:1px solid rgba(212,168,32,0.3);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:var(--gold);flex-shrink:0;">E</div>
+            <div style="width:40px;height:40px;border-radius:8px;background:rgba(212,168,32,0.3);border:2px solid rgba(212,168,32,0.5);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:var(--gold);flex-shrink:0;">E</div>
             <div>
               <div style="font-size:0.92rem;font-weight:600;color:var(--text);">ElytraSMP</div>
               <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Shop Survival</div>
@@ -761,7 +768,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
         </div>
         <div class="card">
           <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">
-            <div style="width:40px;height:40px;border-radius:8px;background:rgba(212,168,32,0.15);border:1px solid rgba(212,168,32,0.3);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:var(--gold);flex-shrink:0;">C</div>
+            <div style="width:40px;height:40px;border-radius:8px;background:rgba(212,168,32,0.3);border:2px solid rgba(212,168,32,0.5);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:var(--gold);flex-shrink:0;">C</div>
             <div>
               <div style="font-size:0.92rem;font-weight:600;color:var(--text);">CorpseSMP</div>
               <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Private SMP</div>
