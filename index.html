@@ -1078,7 +1078,26 @@ function go(p){
   updateBreadcrumbs(p);
   updateMobileMenu(p);
   window.scrollTo(0,0);
+  if(pages[p] && !go.silent && location.pathname !== siteBase+p){
+    history.pushState({page:p},'',siteBase+p);
+  }
 }
+var siteBase = location.pathname.replace(/[^\/]*$/,'');
+function routeFromUrl(){
+  var q = new URLSearchParams(location.search).get('p');
+  var seg = location.pathname.slice(siteBase.length).replace(/\.html$/,'');
+  var h = location.hash.slice(1);
+  var p = pages[q] ? q : pages[seg] ? seg : pages[h] ? h : null;
+  if(q || (pages[h] && !pages[seg])){
+    history.replaceState({page:p||'home'},'',siteBase+(p||''));
+  }
+  return p || 'home';
+}
+window.addEventListener('popstate',function(e){
+  go.silent = true;
+  go((e.state && e.state.page) || routeFromUrl());
+  go.silent = false;
+});
 function updateMobileMenu(page){
   var mobileMenuItems = document.querySelectorAll('#mobile-menu .nl');
   mobileMenuItems.forEach(function(item){
@@ -1100,8 +1119,9 @@ function updateBreadcrumbs(page){
   });
 }
 var slinks={all:null,setup:'sec-setup',config:'sec-config',dev:'sec-dev',network:'sec-network'};
-document.title = pageTitles.home;
-updateBreadcrumbs('home');
+go.silent = true;
+go(routeFromUrl());
+go.silent = false;
 
 function closeMobileMenu(){
   var menu = document.getElementById('mobile-menu');

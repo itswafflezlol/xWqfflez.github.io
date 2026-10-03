@@ -69,6 +69,15 @@ footer{border-top:1px solid var(--border);padding:28px 0;position:relative;z-ind
 .nlinks{display:none;}
 }
 </style>
+<script>
+(function(){
+  var routes=['home','about','work','plugins','credits'];
+  var m=location.pathname.match(/^(.*\/)([^\/]+?)(?:\.html)?\/?$/);
+  if(m && routes.indexOf(m[2])!==-1){
+    location.replace(m[1]+'?p='+m[2]+location.hash);
+  }
+})();
+</script>
 </head>
 <body>
 
