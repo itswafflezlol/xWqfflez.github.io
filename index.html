@@ -297,7 +297,7 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
 .bbb-logo{filter:invert(1)!important;}
 
 /* MUSIC PLAYER */
-.music-player{position:fixed;right:0;top:50%;transform:translateY(-50%);transition:transform .5s cubic-bezier(0.22,1,0.36,1);z-index:200;width:320px;max-width:calc(100vw - 40px);background:rgba(18,18,26,0.96);backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,0.08);border-radius:24px 0 0 24px;padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:-8px 12px 40px rgba(0,0,0,0.5);user-select:none;font-family:'Figtree',sans-serif;}
+.music-player{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:200;width:320px;max-width:calc(100vw - 40px);background:rgba(18,18,26,0.96);backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,0.08);border-radius:24px 0 0 24px;padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:-8px 12px 40px rgba(0,0,0,0.5);user-select:none;font-family:'Figtree',sans-serif;}
 .music-player.collapsed{height:52px;padding:0;border-radius:16px 0 0 16px;box-shadow:none;background:rgba(18,18,26,0.98);transform:translateX(calc(100% - 52px)) translateY(-50%);}
 .music-player.collapsed .mp-panel{display:none;}
 .mp-tab{position:absolute;top:14px;left:14px;width:38px;height:38px;border-radius:10px;background:var(--gold);color:#111;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:201;box-shadow:-2px 0 10px rgba(0,0,0,0.3);transition:all .25s ease;font-size:1rem;}
@@ -755,7 +755,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
         </div>
         <div class="card">
           <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">
-            <div style="width:40px;height:40px;border-radius:8px;background:rgba(212,168,32,0.3);border:2px solid rgba(212,168,32,0.5);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:var(--gold);flex-shrink:0;">E</div>
+            <div style="width:40px;height:40px;border-radius:8px;background:rgba(135,206,250,0.3);border:2px solid rgba(135,206,250,0.5);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:#87CEEB;flex-shrink:0;">E</div>
             <div>
               <div style="font-size:0.92rem;font-weight:600;color:var(--text);">ElytraSMP</div>
               <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Shop Survival</div>
@@ -768,7 +768,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
         </div>
         <div class="card">
           <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">
-            <div style="width:40px;height:40px;border-radius:8px;background:rgba(212,168,32,0.3);border:2px solid rgba(212,168,32,0.5);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:var(--gold);flex-shrink:0;">C</div>
+            <div style="width:40px;height:40px;border-radius:8px;background:rgba(220,20,60,0.3);border:2px solid rgba(220,20,60,0.5);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:#DC143C;flex-shrink:0;">C</div>
             <div>
               <div style="font-size:0.92rem;font-weight:600;color:var(--text);">CorpseSMP</div>
               <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;color:var(--gold);margin-top:2px;">Private SMP</div>
@@ -1273,14 +1273,72 @@ function filterServices(cat){
     audio.volume = v;
     updateVolPct();
   }, { passive: false });
-  toggleBtn.addEventListener('click', function(){ trackList.classList.toggle('open'); });
+  toggleBtn.addEventListener('click', function(){
+    var isOpen = trackList.classList.contains('open');
+    if(isOpen){
+      if(typeof anime !== 'undefined'){
+        anime({
+          targets: trackList,
+          opacity: [1, 0],
+          height: [trackList.scrollHeight, 0],
+          easing: 'easeOutExpo',
+          duration: 400,
+          complete: function(){
+            trackList.classList.remove('open');
+            trackList.style.height = '';
+          }
+        });
+      }else{
+        trackList.classList.remove('open');
+      }
+    }else{
+      trackList.classList.add('open');
+      if(typeof anime !== 'undefined'){
+        anime({
+          targets: trackList,
+          opacity: [0, 1],
+          height: [0, trackList.scrollHeight],
+          easing: 'easeOutExpo',
+          duration: 400
+        });
+      }
+    }
+  });
 
   function updateTabIcon(){
     var collapsed = player.classList.contains('collapsed');
     mpTab.setAttribute('aria-label', collapsed ? 'Open music player' : 'Close music player');
     mpTab.innerHTML = collapsed ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>' : '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>';
   }
-  mpTab.addEventListener('click', function(){ player.classList.toggle('collapsed'); updateTabIcon(); });
+  mpTab.addEventListener('click', function(){
+    var isCollapsed = player.classList.contains('collapsed');
+    if(isCollapsed){
+      player.classList.remove('collapsed');
+      if(typeof anime !== 'undefined'){
+        anime({
+          targets: player,
+          translateX: [player.offsetWidth - 52, 0],
+          easing: 'easeOutExpo',
+          duration: 600
+        });
+      }
+    }else{
+      if(typeof anime !== 'undefined'){
+        anime({
+          targets: player,
+          translateX: [0, player.offsetWidth - 52],
+          easing: 'easeInExpo',
+          duration: 600,
+          complete: function(){
+            player.classList.add('collapsed');
+          }
+        });
+      }else{
+        player.classList.add('collapsed');
+      }
+    }
+    updateTabIcon();
+  });
   updateTabIcon();
   drawViz();
 
