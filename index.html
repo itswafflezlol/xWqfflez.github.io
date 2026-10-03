@@ -8,7 +8,8 @@
 <script src="https://unpkg.com/jsmediatags@3.9.5/dist/jsmediatags.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script>var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);if(location.protocol!=='https:' && location.hostname!=='localhost'){location.replace('https:'+location.href.substring(location.protocol.length));}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script>if(location.protocol!=='https:' && location.hostname!=='localhost'){location.replace('https:'+location.href.substring(location.protocol.length));}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -224,7 +225,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;position:relative;z-ind
 .breadcrumbs{font-size:0.72rem;}
 }
 
-/* WAFFLES BRAND OVERRIDES - LIGHT MODE DEFAULT */
+/* WAFFLES BRAND OVERRIDES */
 :root{
   --bg:#FFFDF6;
   --bg1:#FFFFFF;
@@ -237,7 +238,6 @@ footer{border-top:1px solid var(--border);padding:28px 0;position:relative;z-ind
   --gold:#FFD873;
   --gold-l:#FFD873;
   --green:#1ec87a;
-  color-scheme:light;
 }
 body{font-size:15px;background:var(--bg);color:var(--text);}
 nav{background:rgba(255,253,246,0.96);}
@@ -347,55 +347,6 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
   .mp-artist{font-size:0.75rem;}
 }
 
-/* DARK MODE */
-html[data-theme='dark']{
-  --bg:#111111;
-  --bg1:#1a1a1a;
-  --bg2:#222222;
-  --border:rgba(255,253,246,0.12);
-  --border-h:rgba(255,253,246,0.20);
-  --text:#FFFDF6;
-  --muted:#B8B0A0;
-  --dim:#B8B0A0;
-  --gold:#FFD873;
-  --gold-l:#FFE39F;
-  --green:#1ec87a;
-  color-scheme:dark;
-}
-html[data-theme='dark'] body{background:var(--bg);color:var(--text);}
-html[data-theme='dark'] nav{background:var(--bg);}
-html[data-theme='dark'] .btn-s{border-color:var(--text);color:var(--text);}
-html[data-theme='dark'] .btn-s:hover,
-html[data-theme='dark'] .btn-p:hover,
-html[data-theme='dark'] .ncta:hover{background:#111;color:var(--gold);border:1.5px solid var(--gold);}
-html[data-theme='dark'] .btype:hover{background:#111;color:var(--gold);border-color:var(--gold);}
-html[data-theme='dark'] .card:hover{border-color:var(--gold);}
-html[data-theme='dark'] .music-player{background:rgba(18,18,18,0.96);border-color:rgba(255,253,246,0.08);box-shadow:-8px 12px 40px rgba(0,0,0,0.5);}
-html[data-theme='dark'] .mp-cover{border-color:var(--text);box-shadow:0 4px 16px rgba(0,0,0,0.3);}
-html[data-theme='dark'] .mp-title{color:var(--text);}
-html[data-theme='dark'] .mp-artist{color:var(--muted);}
-html[data-theme='dark'] .mp-toggle{border-color:var(--text);color:var(--text);}
-html[data-theme='dark'] .mp-toggle:hover{background:var(--gold);color:#111;border-color:var(--gold);}
-html[data-theme='dark'] .mp-btn{background:var(--bg1);border-color:var(--text);color:var(--text);}
-html[data-theme='dark'] .mp-btn:hover{background:var(--gold);color:#111;border-color:var(--gold);}
-html[data-theme='dark'] .mp-play{background:var(--gold);border-color:var(--text);color:#111;}
-html[data-theme='dark'] .mp-play:hover{background:#111;color:var(--gold);border-color:var(--gold);}
-html[data-theme='dark'] .mp-progress input,
-html[data-theme='dark'] .mp-volume input{background:var(--bg);border-color:var(--text);}
-html[data-theme='dark'] .mp-progress input::-webkit-slider-thumb,
-html[data-theme='dark'] .mp-volume input::-webkit-slider-thumb{border-color:var(--text);}
-html[data-theme='dark'] .mp-progress input::-moz-range-thumb,
-html[data-theme='dark'] .mp-volume input::-moz-range-thumb{border-color:var(--text);}
-html[data-theme='dark'] .mp-volume svg{color:var(--text);}
-html[data-theme='dark'] .mp-time{color:var(--muted);}
-html[data-theme='dark'] .mp-vol-pct{color:var(--text);}
-html[data-theme='dark'] .mp-tracks{border-color:var(--text);}
-html[data-theme='dark'] .mp-track:hover,
-html[data-theme='dark'] .mp-track.active{background:var(--gold);color:#111;border-color:var(--text);}
-html[data-theme='dark'] .mp-track img{border-color:var(--text);}
-html[data-theme='dark'] .mp-viz{background:rgba(255,255,255,0.02);}
-html[data-theme='dark'] .bbb-logo{filter:invert(1)!important;}
-
 /* SOCIALS & ANIMATIONS */
 .socials{display:flex;align-items:center;gap:10px;margin-left:auto;margin-right:8px;}
 .socials a{width:34px;height:34px;border:1.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text);font-size:0.9rem;text-decoration:none;transition:all .2s;}
@@ -412,7 +363,7 @@ html[data-theme='dark'] .bbb-logo{filter:invert(1)!important;}
 .breadcrumb-item.active{color:var(--gold);font-weight:500;}
 .breadcrumb-separator{color:var(--dim);}
 .bbb-logo{height:56px;width:auto;}
-html[data-theme='dark'] .bbb-logo{filter:invert(1);}
+
 </style>
   <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/06yp5nWP/uotgu.jpg">
   <link rel="apple-touch-icon" href="https://i.postimg.cc/06yp5nWP/uotgu.jpg">
@@ -433,7 +384,10 @@ html[data-theme='dark'] .bbb-logo{filter:invert(1);}
   <meta name="twitter:description" content="Minecraft Network Manager with 7+ years experience. Server setups, plugin configuration, Velocity proxies, custom systems.">
   <meta name="twitter:image" content="https://i.postimg.cc/06yp5nWP/uotgu.jpg">
 <style>
-:root, html[data-theme='dark'] {
+.home-hero .pfp-wrap{justify-content:flex-start;margin-bottom:20px;}
+.home-hero .pfp{width:84px;height:84px;}
+.home-hero .pfp-name{font-size:1.4rem;}
+:root {
   --bg: #0a0a0e;
   --bg1: #12121a;
   --bg2: #1a1a24;
@@ -453,7 +407,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
 .bmark { background: var(--gold) !important; color: #111 !important; border-radius: 5px !important; }
 .bname { font-weight: 600; letter-spacing: -0.02em; }
 .home-hero .wrap { text-align: left; }
-.home-hero h1, .page-header h2, .builds-intro h3, .skills-block h4, .pfp-name, .card-name, .mp-title, .price-big { letter-spacing: -0.03em; }
+.home-hero h1, .page-header h2, .pfp-name, .card-name, .mp-title, .price-big { letter-spacing: -0.03em; }
 .home-hero h1 { font-weight: 800; }
 .home-hero h1 span { color: var(--gold-l); }
 .home-hero .sub { margin-left: 0; margin-right: 0; }
@@ -487,12 +441,6 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
 .mp-play { background: var(--gold) !important; color: #111 !important; border-color: var(--gold) !important; }
 .mp-cover { border-color: var(--border-h) !important; }
 .bbb-logo { filter: invert(1) !important; }
-.reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-</style>
-<style>
-.home-hero .pfp-wrap{justify-content:flex-start;margin-bottom:20px;}
-.home-hero .pfp{width:84px;height:84px;}
-.home-hero .pfp-name{font-size:1.4rem;}
 </style>
 </head>
 <body>
@@ -515,7 +463,6 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <a href="https://www.tiktok.com/@xwqfflezmc?lang=en" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
     </div>
     <button class="ncta" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')">Hire Me</button>
-    <button class="nl" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme"><i class="fa-solid fa-sun"></i></button>
     <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
   </div>
 </nav>
@@ -1336,22 +1283,6 @@ function filterServices(cat){
   audio.volume = baseVol;
   updateVolPct();
   loadTrack(0, false);
-
-  var themeToggle = document.getElementById('theme-toggle');
-  function setThemeIcon(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(themeToggle) themeToggle.innerHTML = '<i class="fa-solid '+(isDark?'fa-sun':'fa-moon')+'"></i>';
-  }
-  if(themeToggle){
-    setThemeIcon();
-    themeToggle.addEventListener('click', function(){
-      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      var next = isDark ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      setThemeIcon();
-    });
-  }
 })();
 </script>
 
@@ -1376,6 +1307,88 @@ function filterServices(cat){
         if(target){
           lenis.scrollTo(target);
         }
+      });
+    });
+  }
+})();
+</script>
+<script>
+(function(){
+  if(typeof anime !== 'undefined'){
+    anime({
+      targets: '.home-hero h1',
+      opacity: [0, 1],
+      translateY: [30, 0],
+      duration: 1000,
+      easing: 'easeOutExpo',
+      delay: 200
+    });
+    anime({
+      targets: '.home-hero .sub',
+      opacity: [0, 1],
+      translateY: [20, 0],
+      duration: 1000,
+      easing: 'easeOutExpo',
+      delay: 400
+    });
+    anime({
+      targets: '.hero-btns button',
+      opacity: [0, 1],
+      translateY: [20, 0],
+      duration: 800,
+      easing: 'easeOutExpo',
+      delay: anime.stagger(100, {start: 600})
+    });
+    anime({
+      targets: '.stat',
+      opacity: [0, 1],
+      scale: [0.8, 1],
+      duration: 800,
+      easing: 'easeOutExpo',
+      delay: anime.stagger(100, {start: 800})
+    });
+    anime({
+      targets: '.card',
+      opacity: [0, 1],
+      translateY: [40, 0],
+      duration: 800,
+      easing: 'easeOutExpo',
+      delay: anime.stagger(100, {start: 200, grid: [1, 4]})
+    });
+    document.querySelectorAll('.btn-p, .btn-s, .ncta').forEach(function(btn){
+      btn.addEventListener('mouseenter', function(){
+        anime({
+          targets: this,
+          scale: 1.05,
+          duration: 300,
+          easing: 'easeOutQuad'
+        });
+      });
+      btn.addEventListener('mouseleave', function(){
+        anime({
+          targets: this,
+          scale: 1,
+          duration: 300,
+          easing: 'easeOutQuad'
+        });
+      });
+    });
+    document.querySelectorAll('.card').forEach(function(card){
+      card.addEventListener('mouseenter', function(){
+        anime({
+          targets: this,
+          translateY: -8,
+          duration: 300,
+          easing: 'easeOutQuad'
+        });
+      });
+      card.addEventListener('mouseleave', function(){
+        anime({
+          targets: this,
+          translateY: 0,
+          duration: 300,
+          easing: 'easeOutQuad'
+        });
       });
     });
   }
