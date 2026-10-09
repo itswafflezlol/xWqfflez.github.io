@@ -4,7 +4,7 @@
 Personal portfolio website for wafflez (also known as ilykeelon), a Minecraft Network Manager with 7+ years of experience specializing in server setups, plugin configuration, Velocity proxies, custom Skript systems, and server optimization.
 
 ## Project Structure
-- `index.html` - Main single-page application with multiple sections (Home, About, Work, Plugins)
+- `index.html` - Main single-page application with multiple sections (Home, About, Work, Plugins, Credits, FAQ, Privacy)
 - `404.html` - Custom 404 error page
 - `sitemap.xml` - XML sitemap for SEO
 - `images/` - Directory for image assets
@@ -12,25 +12,32 @@ Personal portfolio website for wafflez (also known as ilykeelon), a Minecraft Ne
 
 ## Technology Stack
 - HTML5 (single-page application)
-- CSS3 (custom variables for theming, responsive design)
+- CSS3 (custom variables, responsive design, dark theme)
 - Vanilla JavaScript (no frameworks)
 - Font Awesome 6.5.0 (icons)
 - Google Fonts (Poppins, DM Sans, Fraunces, Figtree)
+- Lenis (smooth scrolling)
+- Anime.js 3.2.1 (animations)
 - jsmediatags (ID3 tag reading for music metadata)
 
 ## Key Features
-- Single-page application with client-side routing
-- Dark/light theme toggle with localStorage persistence
+- Single-page application with client-side routing and per-page meta titles/descriptions
+- Fixed dark theme
 - Embedded music player with audio visualization
 - Responsive design (mobile, tablet, desktop)
-- SEO optimized with meta tags, canonical URLs, and sitemap
-- Accessibility features (ARIA labels, semantic HTML)
+- SEO optimized with meta tags, canonical URLs, Open Graph, and sitemap
+- Accessibility features (ARIA labels, skip link, focus-visible styles, reduced-motion support, semantic HTML)
+- Cookie consent notice (local storage only, no tracking)
+- FAQ and Privacy Policy pages
 
 ## Navigation Sections
 1. **Home** - Hero section, server types, skills overview
 2. **About** - Personal information, plugin expertise, background
 3. **Work** - Service pricing, past work examples, client reviews
 4. **Plugins** - Premium downloadable resources (BuiltByBit integration)
+5. **Credits** - Tools and libraries used to build the site
+6. **FAQ** - Common questions about services and ordering
+7. **Privacy** - Privacy policy (no tracking, no data collection)
 
 ## Contact
 - Discord: itswafflez_
@@ -44,5 +51,5 @@ This site is hosted on GitHub Pages at https://xwqfflez.github.io/
 ## Development Notes
 - The site uses client-side JavaScript for page navigation (no actual page reloads)
 - Music player uses Web Audio API for visualization
-- Theme preference is saved to localStorage
+- Cookie consent choice is saved to localStorage (the only stored data)
 - Images are hosted on external services (postimg.cc, discordapp.com, cdn.simpleicons.org)

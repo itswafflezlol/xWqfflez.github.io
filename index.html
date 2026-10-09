@@ -3,12 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>waffles development.</title>
+<title>waffles development - Minecraft Network Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preconnect" href="https://cdn.simpleicons.org">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/jsmediatags@3.9.5/dist/jsmediatags.min.js"></script>
+<script src="https://unpkg.com/jsmediatags@3.9.5/dist/jsmediatags.min.js" defer></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
 <script>if(location.protocol!=='https:' && location.hostname!=='localhost'){location.replace('https:'+location.href.substring(location.protocol.length));}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -246,7 +251,7 @@ nav{background:rgba(255,253,246,0.96);}
 .home-hero h1{font-weight:700;letter-spacing:-0.03em;}
 .home-hero h1 span{color:var(--gold);}
 .stats-row{border-radius:24px;background:var(--bg1);}
-.btn-p,.btn-s,.ncta{border-radius:9999px;transition:background-color 0.2s ease,color 0.2s ease,border-color 0.2s ease,opacity 0.2s ease;}
+.btn-p,.btn-s,.ncta{border-radius:8px;transition:background-color 0.2s ease,color 0.2s ease,border-color 0.2s ease,opacity 0.2s ease;}
 .btn-p{background:var(--gold);color:#111;padding:14px 26px;font-weight:700;}
 .btn-p:hover{background:#111;color:var(--gold);opacity:1;}
 .ncta{padding:10px 22px;font-weight:700;}
@@ -265,14 +270,14 @@ nav{background:rgba(255,253,246,0.96);}
 .hire-card::before{background:var(--gold);opacity:1;height:3px;}
 .price-line{border:1.5px solid var(--gold);}
 .bottom-cta,.cta-strip{border:1.5px solid var(--border);}
-.chip{background:var(--bg1);border:1.5px solid var(--border);border-radius:9999px;}
+.chip{background:var(--bg1);border:1.5px solid var(--border);border-radius:6px;}
 .chip:hover{background:var(--gold);color:#111;border-color:#111;}
 .pfp{border-color:var(--gold);}
 .rev-text::before{font-family:'Fraunces',serif;color:var(--gold);}
 .stars i{color:var(--gold);}
 .av{background:var(--gold);color:#111;border:2px solid #111;}
 img.av{background:transparent;border:2px solid var(--gold);}
-.slink{border-radius:9999px;}
+.slink{border-radius:8px;}
 .slink:hover,.slink.on{background:var(--gold);color:#111;}
 footer{border-top:1.5px solid var(--border);padding:40px 0;}
 .footer-links button{font-weight:600;color:var(--text);}
@@ -366,6 +371,60 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
 .breadcrumb-separator{color:var(--dim);}
 .bbb-logo{height:56px;width:auto;}
 
+/* STICKY MOBILE CTA */
+.mobile-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:190;padding:10px 14px;background:rgba(10,10,14,0.97);backdrop-filter:blur(8px);border-top:1px solid var(--border);}
+.mobile-cta button{width:100%;padding:14px;font-size:0.95rem;}
+@media(max-width:560px){
+  .mobile-cta{display:block;}
+  body{padding-bottom:64px;}
+  .music-player{bottom:84px;}
+  .music-player.collapsed{bottom:84px;}
+}
+
+/* COOKIE BANNER */
+.cookie-banner{position:fixed;left:16px;bottom:16px;z-index:300;max-width:360px;background:var(--bg1);border:1px solid var(--border-h);border-radius:12px;padding:16px;box-shadow:0 8px 30px rgba(0,0,0,0.4);display:none;}
+.cookie-banner.show{display:block;}
+.cookie-banner p{font-size:0.8rem;color:var(--muted);line-height:1.6;margin-bottom:12px;}
+.cookie-banner .cb-actions{display:flex;gap:8px;}
+.cookie-banner .cb-accept{flex:1;padding:9px 14px;background:var(--gold);border:none;border-radius:8px;color:#111;font-weight:700;font-size:0.8rem;cursor:pointer;font-family:'Figtree',sans-serif;transition:opacity .15s;}
+.cookie-banner .cb-accept:hover{opacity:0.85;}
+.cookie-banner .cb-decline{flex:1;padding:9px 14px;background:transparent;border:1px solid var(--border-h);border-radius:8px;color:var(--muted);font-weight:600;font-size:0.8rem;cursor:pointer;font-family:'Figtree',sans-serif;transition:border-color .15s;}
+.cookie-banner .cb-decline:hover{border-color:var(--text);color:var(--text);}
+@media(max-width:560px){
+  .cookie-banner{left:12px;right:12px;max-width:none;bottom:76px;}
+}
+
+/* FAQ */
+.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:8px;background:var(--bg1);overflow:hidden;}
+.faq-item summary{padding:15px 18px;font-size:0.92rem;font-weight:600;color:var(--text);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:color .15s;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:'+';font-size:1.1rem;color:var(--gold);flex-shrink:0;font-weight:700;transition:transform .2s;}
+.faq-item[open] summary::after{transform:rotate(45deg);}
+.faq-item summary:hover{color:var(--gold);}
+.faq-item .faq-a{padding:0 18px 15px;font-size:0.85rem;color:var(--muted);line-height:1.7;}
+
+/* LOADING / FORM STATES */
+.img-loading{background:var(--bg2);min-height:40px;}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.field label{font-size:0.8rem;font-weight:600;color:var(--text);}
+.field input,.field textarea,.field select{padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg1);color:var(--text);font-family:'Figtree',sans-serif;font-size:0.86rem;transition:border-color .15s;}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--gold);}
+.field input.err,.field textarea.err{border-color:#d43c3c;}
+.field-err{font-size:0.74rem;color:#d43c3c;display:none;}
+.field-err.show{display:block;}
+.form-msg{font-size:0.82rem;padding:10px 14px;border-radius:8px;display:none;margin-top:8px;}
+.form-msg.ok{display:block;background:rgba(30,200,122,0.12);border:1px solid rgba(30,200,122,0.35);color:var(--green);}
+.form-msg.fail{display:block;background:rgba(212,60,60,0.1);border:1px solid rgba(212,60,60,0.35);color:#d43c3c;}
+.btn-loading{opacity:0.6;pointer-events:none;}
+
+/* ACCESSIBILITY */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:500;background:var(--gold);color:#111;padding:10px 18px;font-weight:700;font-size:0.85rem;border-radius:0 0 8px 0;}
+.skip-link:focus{left:0;}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}
+}
+
 </style>
   <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/06yp5nWP/uotgu.jpg">
   <link rel="apple-touch-icon" href="https://i.postimg.cc/06yp5nWP/uotgu.jpg">
@@ -428,10 +487,10 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
 .price-line { border-color: rgba(255,216,115,0.35) !important; background: transparent !important; }
 .sk-icon { background: rgba(255,216,115,0.12) !important; border-color: rgba(255,216,115,0.25) !important; }
 .sk-icon i { color: var(--gold-l) !important; }
-.chip { background: var(--bg1) !important; border: 1.5px solid var(--border) !important; border-radius: 9999px; }
+.chip { background: var(--bg1) !important; border: 1.5px solid var(--border) !important; border-radius: 8px; }
 .chip:hover { background: rgba(255,216,115,0.08) !important; color: var(--gold) !important; border-color: rgba(255,216,115,0.5) !important; }
 .pfp { border-color: var(--gold) !important; }
-.slink { border-radius: 9999px; }
+.slink { border-radius: 8px; }
 .slink.on, .slink:hover { background: var(--gold) !important; color: #111 !important; }
 .rev-text::before { color: var(--gold) !important; }
 .av { background: var(--gold) !important; color: #111 !important; border-color: var(--gold) !important; }
@@ -454,10 +513,11 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
 </head>
 <body>
 
+<a class="skip-link" href="#p-home" onclick="var p=document.querySelector('.page.show');if(p){p.setAttribute('tabindex','-1');p.focus();}">Skip to content</a>
 <nav>
   <div class="ni">
     <a class="brand" onclick="go('home')">
-      <div class="bmark" style="overflow:hidden;"><img src="https://i.postimg.cc/06yp5nWP/uotgu.jpg" alt="w" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="bmark" style="overflow:hidden;"><img src="https://i.postimg.cc/06yp5nWP/uotgu.jpg" alt="waffles development logo" style="width:100%;height:100%;object-fit:cover;"></div>
       <span class="bname">waffles development.</span>
     </a>
     <div class="nlinks">
@@ -466,6 +526,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <button class="nl" id="nl-work" onclick="go('work')">Work</button>
       <button class="nl" id="nl-plugins" onclick="go('plugins')">Plugins</button>
       <button class="nl" id="nl-credits" onclick="go('credits')">Credits</button>
+      <button class="nl" id="nl-faq" onclick="go('faq')">FAQ</button>
     </div>
     <div class="socials">
       <a href="https://discord.gg/A7NNfAN6c4" target="_blank" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
@@ -473,16 +534,18 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <a href="https://www.tiktok.com/@xwqfflezmc?lang=en" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
     </div>
     <button class="ncta" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')">Hire Me</button>
-    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu"><i class="fa-solid fa-bars"></i></button>
   </div>
 </nav>
 <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 <div class="mobile-menu" id="mobile-menu">
-  <button class="nl" onclick="go('home');closeMobileMenu();">Home</button>
-  <button class="nl" onclick="go('about');closeMobileMenu();">About</button>
-  <button class="nl" onclick="go('work');closeMobileMenu();">Work</button>
-  <button class="nl" onclick="go('plugins');closeMobileMenu();">Plugins</button>
-  <button class="nl" onclick="go('credits');closeMobileMenu();">Credits</button>
+  <button class="nl" data-page="home" onclick="go('home');closeMobileMenu();">Home</button>
+  <button class="nl" data-page="about" onclick="go('about');closeMobileMenu();">About</button>
+  <button class="nl" data-page="work" onclick="go('work');closeMobileMenu();">Work</button>
+  <button class="nl" data-page="plugins" onclick="go('plugins');closeMobileMenu();">Plugins</button>
+  <button class="nl" data-page="credits" onclick="go('credits');closeMobileMenu();">Credits</button>
+  <button class="nl" data-page="faq" onclick="go('faq');closeMobileMenu();">FAQ</button>
+  <button class="nl" data-page="privacy" onclick="go('privacy');closeMobileMenu();">Privacy</button>
   <div style="height:1px;background:var(--border);margin:8px 0;"></div>
   <button class="nl" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank');closeMobileMenu();"><i class="fa-brands fa-discord" style="margin-right:8px;"></i>Discord</button>
   <button class="nl" onclick="window.open('https://github.com/itswafflezlol/','_blank');closeMobileMenu();"><i class="fa-brands fa-github" style="margin-right:8px;"></i>GitHub</button>
@@ -569,6 +632,8 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <button onclick="go('work')">Work</button>
       <button onclick="go('plugins')">Plugins</button>
       <button onclick="go('credits')">Credits</button>
+      <button onclick="go('faq')">FAQ</button>
+      <button onclick="go('privacy')">Privacy</button>
     </div>
     <span class="footer-copy">&copy; 2026 waffles development.</span>
   </div></div></footer>
@@ -686,7 +751,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
         <div class="card">
           <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">
             <div style="width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;overflow:hidden;flex-shrink:0;">
-              <img src="https://i.postimg.cc/yDVRnnz3/heart-(1).png" alt="Velora logo" style="width:100%;height:100%;object-fit:cover;border-radius:8px;max-width:40px;max-height:40px;" onerror="this.parentElement.textContent='V'">
+              <img src="https://i.postimg.cc/yDVRnnz3/heart-(1).png" alt="Velora logo" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:8px;max-width:40px;max-height:40px;" onerror="this.parentElement.textContent='V'">
             </div>
             <div>
               <div style="font-size:0.92rem;font-weight:600;color:var(--text);">Velora Events</div>
@@ -701,7 +766,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
         <div class="card">
           <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">
             <div style="width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;overflow:hidden;flex-shrink:0;">
-              <img src="https://i.postimg.cc/06jw1Qjm/Pirate-Kits.png" alt="Pirate Kits logo" style="width:100%;height:100%;object-fit:cover;border-radius:8px;max-width:40px;max-height:40px;" onerror="this.parentElement.textContent='P'">
+              <img src="https://i.postimg.cc/06jw1Qjm/Pirate-Kits.png" alt="Pirate Kits logo" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:8px;max-width:40px;max-height:40px;" onerror="this.parentElement.textContent='P'">
             </div>
             <div>
               <div style="font-size:0.92rem;font-weight:600;color:var(--text);">Pirate Kits</div>
@@ -716,7 +781,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
         <div class="card">
           <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">
             <div style="width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;overflow:hidden;flex-shrink:0;">
-              <img src="https://i.postimg.cc/NFL1WN21/New-Project-2026-03-17T181901-887.png" alt="UnstableMC logo" style="width:100%;height:100%;object-fit:cover;border-radius:8px;max-width:40px;max-height:40px;" onerror="this.parentElement.textContent='U'">
+              <img src="https://i.postimg.cc/NFL1WN21/New-Project-2026-03-17T181901-887.png" alt="UnstableMC logo" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:8px;max-width:40px;max-height:40px;" onerror="this.parentElement.textContent='U'">
             </div>
             <div>
               <div style="font-size:0.92rem;font-weight:600;color:var(--text);">UnstableMC</div>
@@ -731,7 +796,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
         <div class="card">
           <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">
             <div style="width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;overflow:hidden;flex-shrink:0;">
-              <img src="https://i.postimg.cc/7fNGC7T3/assasin.png" alt="CelestialMC logo" style="width:100%;height:100%;object-fit:cover;border-radius:8px;max-width:40px;max-height:40px;" onerror="this.parentElement.textContent='C'">
+              <img src="https://i.postimg.cc/7fNGC7T3/assasin.png" alt="CelestialMC logo" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:8px;max-width:40px;max-height:40px;" onerror="this.parentElement.textContent='C'">
             </div>
             <div>
               <div style="font-size:0.92rem;font-weight:600;color:var(--text);">CelestialMC</div>
@@ -788,19 +853,48 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
     <div style="margin-bottom:48px;">
       <div class="services-section-label">Reviews</div>
       <div class="rev-grid">
-        <div class="rev"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="rev-text">waffles made my server in under 2 days. genuinely it was the most peak thing i have ever saw.</p><div class="rev-auth"><img class="av" src="https://cdn.discordapp.com/avatars/1034838685415383050/696f351e35de9d8d95db50bd92ecce1d.png?size=1024" alt="roseinatorr"><div><div class="rev-name">roseinatorr</div><div class="rev-role"></div></div></div></div>
-        <div class="rev"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="rev-text">waffles helped me out with my systems for my gamemodes so 10/10 hes the goat</p><div class="rev-auth"><img class="av" src="https://cdn.discordapp.com/avatars/636905903970582538/d56326dac266a7f5cd8370486b3f7200.png?size=1024" alt="pavv_"><div><div class="rev-name">pavv_</div><div class="rev-role"></div></div></div></div>
-        <div class="rev"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="rev-text">he configured my ENTIRE luckperms and then optimized my stuff, lowk one of the best right now</p><div class="rev-auth"><img class="av" src="https://cdn.discordapp.com/avatars/1201285919148355705/fad15b69a44cde7ff605e48b2c4a0901.png?size=1024" alt="vortexx_"><div><div class="rev-name">vortexx_</div><div class="rev-role"></div></div></div></div>
+        <div class="rev"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="rev-text">waffles made my server in under 2 days. genuinely it was the most peak thing i have ever saw.</p><div class="rev-auth"><img class="av" src="https://cdn.discordapp.com/avatars/1034838685415383050/696f351e35de9d8d95db50bd92ecce1d.png?size=1024" alt="roseinatorr avatar" loading="lazy"><div><div class="rev-name">roseinatorr</div><div class="rev-role"></div></div></div></div>
+        <div class="rev"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="rev-text">waffles helped me out with my systems for my gamemodes so 10/10 hes the goat</p><div class="rev-auth"><img class="av" src="https://cdn.discordapp.com/avatars/636905903970582538/d56326dac266a7f5cd8370486b3f7200.png?size=1024" alt="pavv_ avatar" loading="lazy"><div><div class="rev-name">pavv_</div><div class="rev-role"></div></div></div></div>
+        <div class="rev"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="rev-text">he configured my ENTIRE luckperms and then optimized my stuff, lowk one of the best right now</p><div class="rev-auth"><img class="av" src="https://cdn.discordapp.com/avatars/1201285919148355705/fad15b69a44cde7ff605e48b2c4a0901.png?size=1024" alt="vortexx_ avatar" loading="lazy"><div><div class="rev-name">vortexx_</div><div class="rev-role"></div></div></div></div>
       </div>
     </div>
 
     <div class="bottom-cta">
       <h3>Ready to get started?</h3>
-      <p>Drop me a message on Discord and tell me about your server.</p>
-      <div style="display:flex;gap:9px;flex-wrap:wrap;">
-        <button class="btn-p" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')"><i class="fa-brands fa-discord"></i>&nbsp; Join Discord</button>
-        <button class="btn-s" onclick="go('home')">Back Home</button>
-      </div>
+      <p>Fill this out and it copies a message you can paste in Discord, or just DM me directly.</p>
+      <form id="quote-form" novalidate>
+        <div class="field">
+          <label for="qf-name">Your name or Discord tag</label>
+          <input type="text" id="qf-name" name="name" autocomplete="name">
+          <span class="field-err" id="qf-name-err">Enter your name or Discord tag.</span>
+        </div>
+        <div class="field">
+          <label for="qf-type">Server type</label>
+          <select id="qf-type" name="type">
+            <option value="">Select a server type</option>
+            <option>Survival SMP</option>
+            <option>Lifesteal</option>
+            <option>Lobby</option>
+            <option>Proxy Network</option>
+            <option>BoxSMP</option>
+            <option>Event Server</option>
+            <option>RPG</option>
+            <option>Economy</option>
+            <option>Something else</option>
+          </select>
+          <span class="field-err" id="qf-type-err">Pick a server type.</span>
+        </div>
+        <div class="field">
+          <label for="qf-desc">What do you need?</label>
+          <textarea id="qf-desc" name="desc" rows="3"></textarea>
+          <span class="field-err" id="qf-desc-err">Describe what you need in a few words.</span>
+        </div>
+        <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:4px;">
+          <button type="submit" class="btn-p" id="qf-submit"><i class="fa-brands fa-discord"></i>&nbsp; Send via Discord</button>
+          <button type="button" class="btn-s" onclick="go('home')">Back Home</button>
+        </div>
+        <div class="form-msg" id="qf-msg" role="status"></div>
+      </form>
     </div>
   </div>
   <footer><div class="wrap"><div class="footer-inner">
@@ -810,6 +904,8 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <button onclick="go('work')">Work</button>
       <button onclick="go('plugins')">Plugins</button>
       <button onclick="go('credits')">Credits</button>
+      <button onclick="go('faq')">FAQ</button>
+      <button onclick="go('privacy')">Privacy</button>
     </div>
     <span class="footer-copy">&copy; 2026 waffles development.</span>
   </div></div></footer>
@@ -886,6 +982,8 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <button onclick="go('work')">Work</button>
       <button onclick="go('plugins')">Plugins</button>
       <button onclick="go('credits')">Credits</button>
+      <button onclick="go('faq')">FAQ</button>
+      <button onclick="go('privacy')">Privacy</button>
     </div>
     <span class="footer-copy">&copy; 2026 waffles development.</span>
   </div></div></footer>
@@ -905,7 +1003,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <p>Premium downloadable resources for your Minecraft server.</p>
     </div>
     <div class="card" style="text-align:center;padding:48px 28px;max-width:600px;margin:0 auto;">
-      <img class="bbb-logo" src="https://cdn.simpleicons.org/builtbybit/000000" alt="BuiltByBit logo" onerror="this.style.display='none'">
+      <img class="bbb-logo" src="https://cdn.simpleicons.org/builtbybit/000000" alt="BuiltByBit logo" loading="lazy" onerror="this.style.display='none'">
       <h3 style="font-size:1.4rem;font-weight:700;margin-bottom:8px;">My Pre-Made Plugins, Configs, and Setups</h3>
       <p style="color:var(--muted);margin-bottom:24px;">Stay tuned, products will be listed here soon.</p>
       <button class="btn-p" onclick="window.open('https://builtbybit.com/members/xwqfflez.488494/','_blank')">Visit BuiltByBit Profile</button>
@@ -918,6 +1016,8 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <button onclick="go('work')">Work</button>
       <button onclick="go('plugins')">Plugins</button>
       <button onclick="go('credits')">Credits</button>
+      <button onclick="go('faq')">FAQ</button>
+      <button onclick="go('privacy')">Privacy</button>
     </div>
     <span class="footer-copy">&copy; 2026 waffles development.</span>
   </div></div></footer>
@@ -1012,9 +1112,100 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
       <button onclick="go('work')">Work</button>
       <button onclick="go('plugins')">Plugins</button>
       <button onclick="go('credits')">Credits</button>
+      <button onclick="go('faq')">FAQ</button>
+      <button onclick="go('privacy')">Privacy</button>
     </div>
     <span class="footer-copy">&copy; 2026 waffles development.</span>
   </div></div></footer>
+</div>
+
+<!-- FAQ -->
+<div id="p-faq" class="page">
+  <div class="wrap" style="padding-top:calc(var(--nh) + 52px);padding-bottom:72px;">
+    <div class="breadcrumbs">
+      <span class="breadcrumb-item"><button onclick="go('home')" style="background:none;border:none;color:inherit;cursor:pointer;font-family:inherit;font-size:inherit;">Home</button></span>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-item active">FAQ</span>
+    </div>
+    <div class="page-header">
+      <div class="eyebrow">faq</div>
+      <h2>Frequently Asked Questions</h2>
+      <p>Common questions about services, pricing, and how ordering works.</p>
+    </div>
+    <div style="max-width:640px;">
+      <details class="faq-item"><summary>How do I order a server setup?</summary><div class="faq-a">Join the Discord server or DM itswafflez_ directly with what you need. We talk through scope, agree on a price, and I get started.</div></details>
+      <details class="faq-item"><summary>How much does a setup cost?</summary><div class="faq-a">Most full setups land between $50 and $150 depending on scope. Smaller jobs like single-plugin config are cheaper. You get a quote before any work starts.</div></details>
+      <details class="faq-item"><summary>How long does a setup take?</summary><div class="faq-a">Simple setups are usually done in a few days. Larger networks with custom systems can take one to two weeks depending on complexity.</div></details>
+      <details class="faq-item"><summary>What server types do you work with?</summary><div class="faq-a">Survival SMP, Lifesteal, Lobby, Proxy networks, BoxSMP, Random Kits, event servers, RPG, economy servers, and anything else you can describe.</div></details>
+      <details class="faq-item"><summary>Do you work with Paper, Spigot, and Velocity?</summary><div class="faq-a">Yes. PaperMC, Spigot, and Velocity proxy setups are the main stack, along with LuckPerms, EssentialsX, WorldEdit, FAWE, ItemsAdder, Nexo, Oraxen, PlaceholderAPI, TAB, and Vault.</div></details>
+      <details class="faq-item"><summary>Can you fix or optimize an existing server?</summary><div class="faq-a">Yes. TPS troubleshooting, JVM flag tuning, PaperMC config optimization, and plugin conflict resolution are all part of what I do.</div></details>
+      <details class="faq-item"><summary>Do you offer support after the setup is done?</summary><div class="faq-a">If something I configured breaks, I fix it. For bigger changes or new features after delivery, we can talk about additional work.</div></details>
+      <details class="faq-item"><summary>How do payments work?</summary><div class="faq-a">Payment details get sorted in Discord DMs before work starts. Pricing is agreed upfront so there are no surprises.</div></details>
+    </div>
+    <div class="bottom-cta">
+      <h3>Still have questions?</h3>
+      <p>DM me on Discord and I'll answer anything else.</p>
+      <button class="btn-p" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')"><i class="fa-brands fa-discord"></i>&nbsp; Join Discord</button>
+    </div>
+  </div>
+  <footer><div class="wrap"><div class="footer-inner">
+    <div class="footer-links">
+      <button onclick="go('home')">Home</button>
+      <button onclick="go('about')">About</button>
+      <button onclick="go('work')">Work</button>
+      <button onclick="go('plugins')">Plugins</button>
+      <button onclick="go('credits')">Credits</button>
+      <button onclick="go('faq')">FAQ</button>
+      <button onclick="go('privacy')">Privacy</button>
+    </div>
+    <span class="footer-copy">&copy; 2026 waffles development.</span>
+  </div></div></footer>
+</div>
+
+<!-- PRIVACY -->
+<div id="p-privacy" class="page">
+  <div class="wrap" style="padding-top:calc(var(--nh) + 52px);padding-bottom:72px;">
+    <div class="breadcrumbs">
+      <span class="breadcrumb-item"><button onclick="go('home')" style="background:none;border:none;color:inherit;cursor:pointer;font-family:inherit;font-size:inherit;">Home</button></span>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-item active">Privacy</span>
+    </div>
+    <div class="page-header">
+      <div class="eyebrow">privacy</div>
+      <h2>Privacy Policy</h2>
+      <p>Last updated: 2026</p>
+    </div>
+    <div class="about-copy" style="max-width:640px;">
+      <p><strong>What this site collects.</strong> This is a static website hosted on GitHub Pages. It does not collect, store, or share any personal data. There are no analytics, no tracking scripts, and no third-party advertising cookies.</p>
+      <p><strong>Local storage.</strong> The site uses your browser's local storage only to remember your cookie consent choice. This data never leaves your device.</p>
+      <p><strong>Music player.</strong> The built-in music player streams audio files hosted in this repository. No listening data is collected.</p>
+      <p><strong>External resources.</strong> Fonts are loaded from Google Fonts, icons from Font Awesome's CDN, and some images are hosted on postimg.cc, cdn.simpleicons.org, and discordapp.com. These services may see your IP address when your browser loads the resources, as with any website.</p>
+      <p><strong>GitHub Pages.</strong> GitHub may log standard server information (IP address, browser type, pages visited) as part of hosting. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener" style="color:var(--gold);">GitHub's Privacy Statement</a> for details.</p>
+      <p><strong>Contact.</strong> Questions about this policy? DM itswafflez_ on Discord.</p>
+    </div>
+  </div>
+  <footer><div class="wrap"><div class="footer-inner">
+    <div class="footer-links">
+      <button onclick="go('home')">Home</button>
+      <button onclick="go('about')">About</button>
+      <button onclick="go('work')">Work</button>
+      <button onclick="go('plugins')">Plugins</button>
+      <button onclick="go('credits')">Credits</button>
+      <button onclick="go('faq')">FAQ</button>
+      <button onclick="go('privacy')">Privacy</button>
+    </div>
+    <span class="footer-copy">&copy; 2026 waffles development.</span>
+  </div></div></footer>
+</div>
+
+<div class="mobile-cta"><button class="btn-p" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')">Hire Me on Discord</button></div>
+
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie notice">
+  <p>This site stores a small preference in your browser to remember this choice. No tracking, no analytics, no ads.</p>
+  <div class="cb-actions">
+    <button class="cb-accept" onclick="setConsent('yes')">Got it</button>
+    <button class="cb-decline" onclick="setConsent('no')">Dismiss</button>
+  </div>
 </div>
 
 <div class="music-player" id="music-player" role="region" aria-label="Music player">
@@ -1064,9 +1255,25 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
   Inline scripts in HTML don't support traditional source maps.
 -->
 <script>
-var pages={home:'p-home',about:'p-about',work:'p-work',plugins:'p-plugins',credits:'p-credits'};
-var nls={home:'nl-home',about:'nl-about',work:'nl-work',plugins:'nl-plugins',credits:'nl-credits'};
-var pageTitles={home:'waffles development - Minecraft Network Manager',about:'About Me - waffles development',work:'Services & Pricing - waffles development',plugins:'Plugins & Resources - waffles development',credits:'Credits - waffles development'};
+var pages={home:'p-home',about:'p-about',work:'p-work',plugins:'p-plugins',credits:'p-credits',faq:'p-faq',privacy:'p-privacy'};
+var nls={home:'nl-home',about:'nl-about',work:'nl-work',plugins:'nl-plugins',credits:'nl-credits',faq:'nl-faq',privacy:'nl-privacy'};
+var pageTitles={home:'waffles development - Minecraft Network Manager',about:'About Me - waffles development',work:'Services & Pricing - waffles development',plugins:'Plugins & Resources - waffles development',credits:'Credits - waffles development',faq:'FAQ - waffles development',privacy:'Privacy Policy - waffles development'};
+var pageDescs={home:'waffles development - Minecraft Network Manager with 7+ years experience. Plugin config, Velocity networks, custom Skript systems, complete server setups.',about:'About wafflez - Minecraft Network Manager. Skills, experience, and past work across major networks.',work:'Minecraft server services and pricing - full setups, plugin config, Velocity networks, and custom development from $50.',plugins:'Free Minecraft plugins and Skript resources built by wafflez, available on BuiltByBit.',credits:'Credits for the tools and libraries used to build this site.',faq:'Frequently asked questions about Minecraft server setups, pricing, turnaround, and how to order.',privacy:'Privacy policy for xwqfflez.github.io - a static site with no tracking, no data collection, and no third-party cookies.'};
+function setMeta(sel,attr,val){
+  var el=document.querySelector(sel);
+  if(el)el.setAttribute(attr,val);
+}
+function updateMeta(p){
+  var d=pageDescs[p]||pageDescs.home;
+  var t=pageTitles[p]||pageTitles.home;
+  document.title=t;
+  setMeta('meta[name="description"]','content',d);
+  setMeta('meta[property="og:title"]','content',t);
+  setMeta('meta[property="og:description"]','content',d);
+  setMeta('meta[name="twitter:title"]','content',t);
+  setMeta('meta[name="twitter:description"]','content',d);
+  setMeta('link[rel="canonical"]','href','https://xwqfflez.github.io/'+(p==='home'?'':p));
+}
 function go(p){
   Object.keys(pages).forEach(function(k){
     var el=document.getElementById(pages[k]);
@@ -1074,7 +1281,7 @@ function go(p){
     var nl=document.getElementById(nls[k]);
     if(nl)nl.className='nl'+(k===p?' on':'');
   });
-  if(pageTitles[p]) document.title = pageTitles[p];
+  updateMeta(p);
   updateBreadcrumbs(p);
   updateMobileMenu(p);
   window.scrollTo(0,0);
@@ -1126,8 +1333,10 @@ go.silent = false;
 function closeMobileMenu(){
   var menu = document.getElementById('mobile-menu');
   var overlay = document.getElementById('mobile-menu-overlay');
+  var btn = document.getElementById('mobile-menu-btn');
   if(menu) menu.classList.remove('show');
   if(overlay) overlay.classList.remove('show');
+  if(btn) btn.setAttribute('aria-expanded','false');
 }
 function initMobileMenu(){
   var mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -1135,8 +1344,9 @@ function initMobileMenu(){
   var mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
   if(mobileMenuBtn){
     mobileMenuBtn.addEventListener('click',function(){
-      if(mobileMenu) mobileMenu.classList.toggle('show');
-      if(mobileMenuOverlay) mobileMenuOverlay.classList.toggle('show');
+      var open = mobileMenu ? mobileMenu.classList.toggle('show') : false;
+      if(mobileMenuOverlay) mobileMenuOverlay.classList.toggle('show',open);
+      mobileMenuBtn.setAttribute('aria-expanded',open?'true':'false');
     });
   }
   if(mobileMenuOverlay){
@@ -1258,6 +1468,8 @@ function filterServices(cat){
     isFadingOut = false;
     cancelAnimationFrame(fadeTimer);
     var t = tracks[idx];
+    if(title) title.textContent = 'Loading...';
+    if(artist) artist.textContent = '';
     audio.src = t.file;
     audio.load();
     cover.src = t.cover;
@@ -1317,6 +1529,20 @@ function filterServices(cat){
       trackList.appendChild(el);
     });
   }
+
+  audio.addEventListener('error',function(){
+    if(title) title.textContent = 'Track unavailable';
+    if(artist) artist.textContent = 'Could not load audio file';
+    isPlaying = false;
+    updatePlayIcon();
+  });
+  audio.addEventListener('waiting',function(){
+    if(artist && isPlaying) artist.textContent = 'Buffering...';
+  });
+  audio.addEventListener('playing',function(){
+    var t = tracks[current];
+    if(t && artist) artist.textContent = t.artist;
+  });
 
   function initVizAudio(){
     if(audioCtx) return;
@@ -1576,6 +1802,70 @@ function filterServices(cat){
     });
   }
 })();
+
+/* quote form */
+(function(){
+  var form=document.getElementById('quote-form');
+  if(!form) return;
+  function setErr(id,on){
+    var f=document.getElementById(id);
+    var e=document.getElementById(id+'-err');
+    if(f)f.classList.toggle('err',on);
+    if(e)e.classList.toggle('show',on);
+    return !on;
+  }
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var name=document.getElementById('qf-name').value.trim();
+    var type=document.getElementById('qf-type').value;
+    var desc=document.getElementById('qf-desc').value.trim();
+    var ok=true;
+    ok=setErr('qf-name',name.length<2)&&ok;
+    ok=setErr('qf-type',!type)&&ok;
+    ok=setErr('qf-desc',desc.length<10)&&ok;
+    var msg=document.getElementById('qf-msg');
+    var btn=document.getElementById('qf-submit');
+    if(!ok){
+      if(msg){msg.className='form-msg fail';msg.textContent='Fix the fields above and try again.';}
+      return;
+    }
+    var text='Quote request from '+name+'\nServer type: '+type+'\nDetails: '+desc;
+    btn.classList.add('btn-loading');
+    function done(copied){
+      btn.classList.remove('btn-loading');
+      if(msg){
+        msg.className='form-msg ok';
+        msg.textContent=copied?'Message copied. Paste it in Discord when it opens.':'Discord opened. Copy your message from the form.';
+      }
+      window.open('https://discord.gg/A7NNfAN6c4','_blank');
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){done(true);},function(){done(false);});
+    }else{
+      done(false);
+    }
+  });
+  ['qf-name','qf-type','qf-desc'].forEach(function(id){
+    var f=document.getElementById(id);
+    if(f)f.addEventListener('input',function(){setErr(id,false);});
+    if(f)f.addEventListener('change',function(){setErr(id,false);});
+  });
+})();
+
+/* cookie consent */
+function setConsent(v){
+  try{localStorage.setItem('cookie-consent',v);}catch(e){}
+  var b=document.getElementById('cookie-banner');
+  if(b)b.classList.remove('show');
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var seen=null;
+  try{seen=localStorage.getItem('cookie-consent');}catch(e){}
+  if(!seen){
+    var b=document.getElementById('cookie-banner');
+    if(b)setTimeout(function(){b.classList.add('show');},1200);
+  }
+});
 </script>
 </body>
 </html>

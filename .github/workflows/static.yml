@@ -34,7 +34,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Create clean URL pages
-        run: for p in home about work plugins credits; do cp index.html "$p.html"; done
+        run: for p in home about work plugins credits faq privacy; do cp index.html "$p.html"; done
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
