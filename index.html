@@ -63,8 +63,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
 
 /* HOME */
 .home-hero{padding:calc(var(--nh) + 72px) 0 64px;}
-.home-hero .mono{font-family:'DM Sans',sans-serif;font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
-.home-hero .mono::before{content:'';width:18px;height:1px;background:var(--gold);}
+
 .home-hero h1{font-size:2.6rem;font-weight:700;letter-spacing:-0.03em;line-height:1.1;color:var(--text);margin-bottom:10px;}
 .home-hero h1 span{color:var(--gold-l);}
 .home-hero .sub{font-size:1rem;color:var(--muted);max-width:480px;line-height:1.7;margin-top:16px;}
@@ -570,7 +569,6 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
           <div class="pfp-tag">Minecraft Network Manager · itswafflez_ on Discord</div>
         </div>
       </div>
-      <div class="mono">available · discord: itswafflez_</div>
       <h1>Minecraft <span>Network Manager</span></h1>
       <p class="sub">7+ years experience building and managing Minecraft servers. Plugin configuration, Velocity proxies, custom systems, complete setups, whatever your server needs, I’ve got it covered.</p>
       <div class="hero-btns">
@@ -1284,7 +1282,8 @@ function go(p){
   updateMeta(p);
   updateBreadcrumbs(p);
   updateMobileMenu(p);
-  window.scrollTo(0,0);
+  if(window.__lenis){window.__lenis.scrollTo(0,{immediate:true});}
+  else{window.scrollTo(0,0);}
   if(pages[p] && !go.silent && location.pathname !== siteBase+p){
     history.pushState({page:p},'',siteBase+p);
   }
@@ -1698,12 +1697,14 @@ function filterServices(cat){
 <script>
 (function(){
   if(typeof Lenis !== 'undefined'){
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
-      smoothWheel: true,
+      smoothWheel: !reduceMotion,
     });
+    window.__lenis = lenis;
     function raf(time){
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -1711,9 +1712,9 @@ function filterServices(cat){
     requestAnimationFrame(raf);
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
       anchor.addEventListener('click',function(e){
-        e.preventDefault();
         var target = document.querySelector(this.getAttribute('href'));
-        if(target){
+        if(target && target.offsetParent !== null){
+          e.preventDefault();
           lenis.scrollTo(target);
         }
       });
