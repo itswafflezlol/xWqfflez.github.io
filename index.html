@@ -469,6 +469,13 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
 .rev-track{display:flex;gap:12px;width:max-content;will-change:transform;}
 .rev-track .rev{flex:0 0 300px;}
 
+/* PAGE WIPE TRANSITION */
+.page-wipe{position:fixed;inset:0;z-index:400;pointer-events:none;visibility:hidden;}
+.page-wipe.active{visibility:visible;pointer-events:auto;}
+.page-wipe .wp{position:absolute;inset:0;transform:translateX(-102%);will-change:transform;}
+.page-wipe .wp-b{background:var(--gold);}
+.page-wipe .wp-a{background:var(--bg1);}
+
 .mp-cover{transition:box-shadow .4s ease,border-color .4s ease;}
 .music-player.playing .mp-cover{box-shadow:0 0 0 2px rgba(255,216,115,0.25),0 4px 24px rgba(255,216,115,0.15);border-color:rgba(255,216,115,0.5);}
 .music-player.playing .mp-tab{box-shadow:0 0 0 3px rgba(255,216,115,0.25);}
@@ -1353,6 +1360,8 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
   </div></div></footer>
 </div>
 
+<div class="page-wipe" id="page-wipe" aria-hidden="true"><div class="wp wp-b"></div><div class="wp wp-a"></div></div>
+
 <div class="mobile-cta"><button class="btn-p" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')">Hire Me on Discord</button></div>
 
 <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie notice">
@@ -1442,12 +1451,12 @@ function go(p,instant){
   updateMeta(p);
   updateBreadcrumbs(p);
   updateMobileMenu(p);
-  if(window.__lenis){window.__lenis.scrollTo(0,{immediate:true});}
-  else{window.scrollTo(0,0);}
   var nextEl=document.getElementById(pages[p]);
   var current=document.querySelector('.page.show');
   var canAnim=!instant&&typeof anime!=='undefined'&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function finalize(target,samePage){
+    if(window.__lenis){window.__lenis.scrollTo(0,{immediate:true});}
+    else{window.scrollTo(0,0);}
     Object.keys(pages).forEach(function(k){
       var el=document.getElementById(pages[k]);
       var cls='page'+(k===target?' show':'');
@@ -1471,24 +1480,22 @@ function go(p,instant){
     }
   }
   if(current===nextEl){finalize(p,true);return;}
-  if(canAnim&&current){
+  var wipe=document.getElementById('page-wipe');
+  if(canAnim&&current&&wipe){
     if(transitionBusy){pendingPage=p;return;}
     transitionBusy=true;
-    anime({
-      targets:current,
-      opacity:[1,0],
-      translateY:[0,8],
-      duration:180,
-      easing:'easeInQuad',
-      complete:function(){
-        current.style.opacity='';
-        current.style.transform='';
-        transitionBusy=false;
+    wipe.classList.add('active');
+    var wpA=wipe.querySelector('.wp-a'),wpB=wipe.querySelector('.wp-b');
+    anime.timeline({complete:function(){wipe.classList.remove('active');transitionBusy=false;}})
+      .add({targets:wpA,translateX:['-102%','0%'],duration:360,easing:'easeInQuart'})
+      .add({targets:wpB,translateX:['-102%','0%'],duration:400,easing:'easeInQuart'},'-=320')
+      .add({duration:1,begin:function(){
         var target=pendingPage||p;
         pendingPage=null;
         finalize(target,false);
-      }
-    });
+      }})
+      .add({targets:wpA,translateX:['0%','102%'],duration:400,easing:'easeOutQuart'})
+      .add({targets:wpB,translateX:['0%','102%'],duration:440,easing:'easeOutQuart'},'-=360');
   }else{
     finalize(p,false);
   }
