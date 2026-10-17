@@ -4,7 +4,7 @@
 Personal portfolio website for wafflez (also known as ilykeelon), a Minecraft Network Manager with 7+ years of experience specializing in server setups, plugin configuration, Velocity proxies, custom Skript systems, and server optimization.
 
 ## Project Structure
-- `index.html` - Main single-page application with multiple sections (Home, About, Work, Plugins, Credits, FAQ, Privacy)
+- `index.html` - Main single-page application with multiple sections (Home, About, Work, Plugins, Jobs, Credits, FAQ, Privacy)
 - `404.html` - Custom 404 error page
 - `sitemap.xml` - XML sitemap for SEO
 - `images/` - Directory for image assets
@@ -35,9 +35,10 @@ Personal portfolio website for wafflez (also known as ilykeelon), a Minecraft Ne
 2. **About** - Personal information, plugin expertise, background
 3. **Work** - Service pricing, past work examples, client reviews
 4. **Plugins** - Premium downloadable resources (BuiltByBit integration)
-5. **Credits** - Tools and libraries used to build the site
-6. **FAQ** - Common questions about services and ordering
-7. **Privacy** - Privacy policy (no tracking, no data collection)
+5. **Jobs** - Work history and current roles (CEO of KLAYZ, owner/manager roles)
+6. **Credits** - Tools and libraries used to build the site
+7. **FAQ** - Common questions about services and ordering
+8. **Privacy** - Privacy policy (no tracking, no data collection)
 
 ## Contact
 - Discord: itswafflez_
