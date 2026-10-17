@@ -424,6 +424,34 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
   *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}
 }
 
+/* MICRO-ANIMATIONS */
+.nl{position:relative;}
+.nl::after{content:'';position:absolute;left:12px;right:12px;bottom:1px;height:2px;background:var(--gold);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(0.22,1,0.36,1);}
+.nl:hover::after,.nl.on::after{transform:scaleX(1);}
+.mobile-menu .nl::after{display:none;}
+
+.btn-p{position:relative;overflow:hidden;}
+.btn-p::after{content:'';position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.35),transparent);transform:skewX(-20deg);pointer-events:none;}
+.btn-p:hover::after{left:130%;transition:left .55s cubic-bezier(0.22,1,0.36,1);}
+.btn-p i,.btn-p::after{will-change:left;}
+
+.home-hero h1::after{content:'▌';display:inline-block;color:var(--gold);font-weight:400;margin-left:6px;animation:caret-blink 1.15s steps(1) infinite;}
+@keyframes caret-blink{0%,55%{opacity:1;}56%,100%{opacity:0;}}
+
+.page.show .eyebrow::before{transform-origin:left;animation:line-draw .55s cubic-bezier(0.22,1,0.36,1) .15s both;}
+@keyframes line-draw{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+
+.stat{transition:background-color .25s ease;}
+.stat:hover{background:rgba(255,216,115,0.05);}
+
+.slink{position:relative;transition:color .15s,padding-left .2s cubic-bezier(0.22,1,0.36,1);}
+.slink.on::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;background:var(--gold);border-radius:2px;}
+
+.mp-cover{transition:box-shadow .4s ease,border-color .4s ease;}
+.music-player.playing .mp-cover{box-shadow:0 0 0 2px rgba(255,216,115,0.25),0 4px 24px rgba(255,216,115,0.15);border-color:rgba(255,216,115,0.5);}
+.music-player.playing .mp-head i{animation:pulse-note 1.6s ease-in-out infinite;}
+@keyframes pulse-note{0%,100%{opacity:0.6;}50%{opacity:1;}}
+
 </style>
   <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/06yp5nWP/uotgu.jpg">
   <link rel="apple-touch-icon" href="https://i.postimg.cc/06yp5nWP/uotgu.jpg">
@@ -1429,7 +1457,7 @@ function filterServices(cat){
 }
 </script>
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded',function(){
   var J = (typeof jsmediatags !== 'undefined' && jsmediatags) ? jsmediatags : null;
 
   var tracks = [
@@ -1554,6 +1582,7 @@ function filterServices(cat){
     }else{
       playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
     }
+    if(player) player.classList.toggle('playing',isPlaying);
   }
 
   function togglePlay(){
@@ -1750,11 +1779,11 @@ function filterServices(cat){
   audio.volume = baseVol;
   updateVolPct();
   loadTrack(0, false);
-})();
+});
 </script>
 
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded',function(){
   if(typeof Lenis !== 'undefined'){
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var lenis = new Lenis({
@@ -1779,89 +1808,36 @@ function filterServices(cat){
       });
     });
   }
-})();
+});
 </script>
 <script>
-(function(){
-  if(typeof anime !== 'undefined'){
-    anime({
-      targets: '.home-hero h1',
-      opacity: [0, 1],
-      translateY: [30, 0],
-      duration: 1000,
-      easing: 'easeOutExpo',
-      delay: 200
-    });
-    anime({
-      targets: '.home-hero .sub',
-      opacity: [0, 1],
-      translateY: [20, 0],
-      duration: 1000,
-      easing: 'easeOutExpo',
-      delay: 400
-    });
-    anime({
-      targets: '.hero-btns button',
-      opacity: [0, 1],
-      translateY: [20, 0],
-      duration: 800,
-      easing: 'easeOutExpo',
-      delay: anime.stagger(100, {start: 600})
-    });
-    anime({
-      targets: '.stat',
-      opacity: [0, 1],
-      scale: [0.8, 1],
-      duration: 800,
-      easing: 'easeOutExpo',
-      delay: anime.stagger(100, {start: 800})
-    });
-    anime({
-      targets: '.card',
-      opacity: [0, 1],
-      translateY: [40, 0],
-      duration: 800,
-      easing: 'easeOutExpo',
-      delay: anime.stagger(100, {start: 200, grid: [1, 4]})
-    });
-    document.querySelectorAll('.btn-p, .btn-s, .ncta').forEach(function(btn){
-      btn.addEventListener('mouseenter', function(){
-        anime({
-          targets: this,
-          scale: 1.05,
-          duration: 300,
-          easing: 'easeOutQuad'
-        });
-      });
-      btn.addEventListener('mouseleave', function(){
-        anime({
-          targets: this,
-          scale: 1,
-          duration: 300,
-          easing: 'easeOutQuad'
-        });
-      });
-    });
-    document.querySelectorAll('.card').forEach(function(card){
-      card.addEventListener('mouseenter', function(){
-        anime({
-          targets: this,
-          translateY: -8,
-          duration: 300,
-          easing: 'easeOutQuad'
-        });
-      });
-      card.addEventListener('mouseleave', function(){
-        anime({
-          targets: this,
-          translateY: 0,
-          duration: 300,
-          easing: 'easeOutQuad'
-        });
-      });
-    });
-  }
-})();
+document.addEventListener('DOMContentLoaded',function(){
+  if(typeof anime === 'undefined') return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion) return;
+  anime({
+    targets: '.home-hero h1',
+    opacity: [0, 1],
+    letterSpacing: ['-0.08em', '-0.03em'],
+    duration: 900,
+    easing: 'easeOutQuart',
+    delay: 80
+  });
+  anime({
+    targets: ['.pfp-wrap', '.home-hero .sub', '.hero-btns'],
+    opacity: [0, 1],
+    duration: 600,
+    easing: 'easeOutQuad',
+    delay: anime.stagger(120, {start: 250})
+  });
+  anime({
+    targets: '.stats-row',
+    clipPath: ['inset(0 100% 0 0)', 'inset(0 0% 0 0)'],
+    duration: 750,
+    easing: 'easeOutQuart',
+    delay: 520
+  });
+});
 
 /* quote form */
 (function(){
