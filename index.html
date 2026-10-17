@@ -474,7 +474,8 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
 .page-wipe.active{visibility:visible;pointer-events:auto;}
 .page-wipe .wp{position:absolute;inset:0;transform:translateX(-102%);will-change:transform;}
 .page-wipe .wp-b{background:var(--gold);}
-.page-wipe .wp-a{background:var(--bg1);}
+.page-wipe .wp-a{background:var(--bg1);display:flex;align-items:center;justify-content:center;}
+.wp-mark{font-size:2.1rem;font-weight:800;color:var(--gold);letter-spacing:-0.03em;opacity:0;font-family:'Figtree',sans-serif;}
 
 .mp-cover{transition:box-shadow .4s ease,border-color .4s ease;}
 .music-player.playing .mp-cover{box-shadow:0 0 0 2px rgba(255,216,115,0.25),0 4px 24px rgba(255,216,115,0.15);border-color:rgba(255,216,115,0.5);}
@@ -1360,7 +1361,7 @@ nav { background: rgba(10,10,14,0.95) !important; border-bottom: 1px solid var(-
   </div></div></footer>
 </div>
 
-<div class="page-wipe" id="page-wipe" aria-hidden="true"><div class="wp wp-b"></div><div class="wp wp-a"></div></div>
+<div class="page-wipe" id="page-wipe" aria-hidden="true"><div class="wp wp-b"></div><div class="wp wp-a"><span class="wp-mark">w.</span></div></div>
 
 <div class="mobile-cta"><button class="btn-p" onclick="window.open('https://discord.gg/A7NNfAN6c4','_blank')">Hire Me on Discord</button></div>
 
@@ -1485,17 +1486,18 @@ function go(p,instant){
     if(transitionBusy){pendingPage=p;return;}
     transitionBusy=true;
     wipe.classList.add('active');
-    var wpA=wipe.querySelector('.wp-a'),wpB=wipe.querySelector('.wp-b');
+    var wpA=wipe.querySelector('.wp-a'),wpB=wipe.querySelector('.wp-b'),wpM=wipe.querySelector('.wp-mark');
     anime.timeline({complete:function(){wipe.classList.remove('active');transitionBusy=false;}})
-      .add({targets:wpA,translateX:['-102%','0%'],duration:360,easing:'easeInQuart'})
-      .add({targets:wpB,translateX:['-102%','0%'],duration:400,easing:'easeInQuart'},'-=320')
-      .add({duration:1,begin:function(){
+      .add({targets:wpA,translateX:['-102%','0%'],duration:440,easing:'easeInOutQuart'})
+      .add({targets:wpB,translateX:['-102%','0%'],duration:500,easing:'easeInOutQuart',complete:function(){
         var target=pendingPage||p;
         pendingPage=null;
         finalize(target,false);
-      }})
-      .add({targets:wpA,translateX:['0%','102%'],duration:400,easing:'easeOutQuart'})
-      .add({targets:wpB,translateX:['0%','102%'],duration:440,easing:'easeOutQuart'},'-=360');
+      }},'-=380')
+      .add({targets:wpM,opacity:[0,1],duration:180,easing:'easeOutQuad'},'-=220')
+      .add({targets:wpM,opacity:[1,0],duration:160,easing:'easeInQuad'},'+=80')
+      .add({targets:wpA,translateX:['0%','102%'],duration:460,easing:'easeInOutQuart'},'-=80')
+      .add({targets:wpB,translateX:['0%','102%'],duration:520,easing:'easeInOutQuart'},'-=400');
   }else{
     finalize(p,false);
   }
