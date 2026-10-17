@@ -463,6 +463,12 @@ footer{border-top:1.5px solid var(--border);padding:40px 0;}
 .slink{position:relative;transition:color .15s,padding-left .2s cubic-bezier(0.22,1,0.36,1);}
 .slink.on::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;background:var(--gold);border-radius:2px;}
 
+/* SCROLL REVEALS + MARQUEE (micheal.cc style) */
+.builds-intro .eyebrow{display:inline-flex;background:var(--bg1);border:1.5px solid var(--border);border-radius:6px;padding:5px 12px;transform:rotate(-2deg);box-shadow:3px 3px 0 rgba(255,216,115,0.25);}
+.rev-marquee{display:block;overflow:hidden;}
+.rev-track{display:flex;gap:12px;width:max-content;will-change:transform;}
+.rev-track .rev{flex:0 0 300px;}
+
 .mp-cover{transition:box-shadow .4s ease,border-color .4s ease;}
 .music-player.playing .mp-cover{box-shadow:0 0 0 2px rgba(255,216,115,0.25),0 4px 24px rgba(255,216,115,0.15);border-color:rgba(255,216,115,0.5);}
 .music-player.playing .mp-tab{box-shadow:0 0 0 3px rgba(255,216,115,0.25);}
@@ -1947,6 +1953,57 @@ document.addEventListener('DOMContentLoaded',function(){
     easing: 'easeOutQuart',
     delay: 520
   });
+
+  /* whileInView-style reveals: fade-up 24px, once, 50ms sibling stagger */
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var el = en.target;
+      io.unobserve(el);
+      if(el.classList.contains('rv-badge')){
+        anime({targets:el,opacity:[0,1],translateY:[-10,0],rotate:[-4,-2],duration:400,easing:'easeOutQuad'});
+        return;
+      }
+      var sibs = el.parentElement ? Array.prototype.filter.call(el.parentElement.children,function(c){return c.classList.contains('rv-el');}) : [el];
+      var idx = Math.max(0, sibs.indexOf(el));
+      anime({targets:el,opacity:[0,1],translateY:[24,0],duration:450,easing:'easeOutQuad',delay:idx*50});
+    });
+  },{rootMargin:'0px 0px -50px 0px'}) : null;
+  if(io){
+    document.querySelectorAll('.cards > *, .sk-grid > *, .hire-cards > *, .faq-item, .price-line, .btype, .chip').forEach(function(el){
+      el.classList.add('rv-el');
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      io.observe(el);
+    });
+    var badge = document.querySelector('.builds-intro .eyebrow');
+    if(badge){
+      badge.classList.add('rv-el','rv-badge');
+      badge.style.opacity = '0';
+      badge.style.transform = 'translateY(-10px) rotate(-4deg)';
+      io.observe(badge);
+    }
+  }
+
+  /* review marquee: infinite linear scroll, duplicated set, pause on hover */
+  var revGrid = document.querySelector('.rev-grid');
+  if(revGrid){
+    var track = document.createElement('div');
+    track.className = 'rev-track';
+    while(revGrid.firstChild) track.appendChild(revGrid.firstChild);
+    var setHtml = track.innerHTML;
+    track.innerHTML = setHtml + setHtml + setHtml;
+    revGrid.appendChild(track);
+    revGrid.classList.add('rev-marquee');
+    requestAnimationFrame(function(){
+      var setW = track.scrollWidth / 3;
+      if(setW > 0){
+        var mq = anime({targets:track,translateX:[0,-setW],duration:Math.round(setW*35),easing:'linear',loop:true});
+        revGrid.addEventListener('mouseenter',function(){ mq.pause(); });
+        revGrid.addEventListener('mouseleave',function(){ mq.play(); });
+      }
+    });
+  }
 });
 
 /* quote form */
