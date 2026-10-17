@@ -1371,6 +1371,19 @@ function go(p){
   updateMobileMenu(p);
   if(window.__lenis){window.__lenis.scrollTo(0,{immediate:true});}
   else{window.scrollTo(0,0);}
+  if(typeof anime !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var hdr = document.querySelector('#'+pages[p]+' .page-header');
+    if(hdr){
+      anime({
+        targets: hdr.children,
+        opacity: [0, 1],
+        translateX: [-10, 0],
+        duration: 400,
+        easing: 'easeOutQuad',
+        delay: anime.stagger(60)
+      });
+    }
+  }
   if(pages[p] && !go.silent && location.pathname !== siteBase+p){
     history.pushState({page:p},'',siteBase+p);
   }
@@ -1815,14 +1828,35 @@ document.addEventListener('DOMContentLoaded',function(){
   if(typeof anime === 'undefined') return;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduceMotion) return;
-  anime({
-    targets: '.home-hero h1',
-    opacity: [0, 1],
-    letterSpacing: ['-0.08em', '-0.03em'],
-    duration: 900,
-    easing: 'easeOutQuart',
-    delay: 80
-  });
+
+  /* hero title: per-letter reveal, keeps the gold span gold */
+  var h1 = document.querySelector('.home-hero h1');
+  if(h1){
+    var frag = document.createDocumentFragment();
+    Array.prototype.slice.call(h1.childNodes).forEach(function(node){
+      var gold = node.nodeType === 1 && node.tagName === 'SPAN';
+      var text = node.textContent;
+      text.split('').forEach(function(ch){
+        var s = document.createElement('span');
+        s.textContent = ch === ' ' ? ' ' : ch;
+        s.style.display = 'inline-block';
+        s.style.color = gold ? 'var(--gold)' : 'var(--text)';
+        frag.appendChild(s);
+      });
+    });
+    h1.innerHTML = '';
+    h1.appendChild(frag);
+    anime({
+      targets: h1.querySelectorAll('span'),
+      opacity: [0, 1],
+      translateY: [14, 0],
+      rotateZ: [4, 0],
+      duration: 600,
+      easing: 'easeOutQuart',
+      delay: anime.stagger(18, {start: 120})
+    });
+  }
+
   anime({
     targets: ['.pfp-wrap', '.home-hero .sub', '.hero-btns'],
     opacity: [0, 1],
