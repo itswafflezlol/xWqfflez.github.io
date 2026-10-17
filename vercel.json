@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/:page(home|about|work|plugins|jobs|credits|faq|privacy|terms)",
+      "destination": "/index.html"
+    }
+  ]
+}
